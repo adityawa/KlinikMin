@@ -1,0 +1,12 @@
+D:\Adit\Project\Private\STU\Klinik\Klinik.Data\bin\Release\Klinik.Data.dll.config
+D:\Adit\Project\Private\STU\Klinik\Klinik.Data\bin\Release\Klinik.Data.dll
+D:\Adit\Project\Private\STU\Klinik\Klinik.Data\bin\Release\Klinik.Data.pdb
+D:\Adit\Project\Private\STU\Klinik\Klinik.Data\bin\Release\EntityFramework.dll
+D:\Adit\Project\Private\STU\Klinik\Klinik.Data\bin\Release\EntityFramework.SqlServer.dll
+D:\Adit\Project\Private\STU\Klinik\Klinik.Data\bin\Release\EntityFramework.xml
+D:\Adit\Project\Private\STU\Klinik\Klinik.Data\bin\Release\EntityFramework.SqlServer.xml
+D:\Adit\Project\Private\STU\Klinik\Klinik.Data\obj\Release\Klinik.Data.csprojAssemblyReference.cache
+D:\Adit\Project\Private\STU\Klinik\Klinik.Data\obj\Release\Klinik.Data.csproj.CoreCompileInputs.cache
+D:\Adit\Project\Private\STU\Klinik\Klinik.Data\obj\Release\Klinik.Data.csproj.CopyComplete
+D:\Adit\Project\Private\STU\Klinik\Klinik.Data\obj\Release\Klinik.Data.dll
+D:\Adit\Project\Private\STU\Klinik\Klinik.Data\obj\Release\Klinik.Data.pdb

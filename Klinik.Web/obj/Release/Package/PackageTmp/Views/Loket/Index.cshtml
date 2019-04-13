@@ -1,0 +1,450 @@
+﻿@model Klinik.Entities.Loket.LoketModel
+
+@{
+    /**/
+
+    ViewBag.Title = "RegistrationList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <style>
+        .form-horizontal .control-label {
+            text-align: left;
+        }
+    </style>
+}
+
+@if (Model.PoliFromID == 1)
+{
+    <div class="col-md-12">
+        <form class="form-horizontal form-bordered" method="post" action="/Loket/Create">
+            <section class="panel">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <a href="#" class="fa fa-caret-down"></a>
+                    </div>
+                    <div>
+                        <h5 class="panel-title">
+                            @Klinik.Resources.UIMessages.Register
+                        </h5>
+                    </div>
+                </header>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-md-1 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Patient</label>
+                        @Html.HiddenFor(x => x.Id)
+                        @Html.HiddenFor(x => x.Status)
+                        @Html.HiddenFor(x => x.CurrentPoliID)
+                        @Html.HiddenFor(x => x.PoliFromID)
+                        <div class="col-md-2">
+                            @Html.DatalistFor(x => x.PatientID, new PatientDataList { Url = "/Loket/AllPatient" }, new { @id = "dlPatient" })
+                        </div>
+                        <label class="col-md-1 control-label" for="inputDefault">@Klinik.Resources.UIMessages.BPJSNo</label>
+                        <div class="col-md-2">
+                            @Html.TextBoxFor(x => x.PatientBPJSNumber, new { @class = "form-control", @id = "tbBPJSNumber", @readonly = "readonly" })
+                        </div>
+                        <label class="col-md-1 control-label " for="inputDefault" style="text-align:left">
+                            @Klinik.Resources.UIMessages.PoliTo
+                        </label>
+                        <div class="col-md-2">
+                            @Html.DropDownListFor(p => p.PoliToID, (IEnumerable<SelectListItem>)ViewBag.PoliList, new { @class = "form-control", @id = "ddlpolito" })
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2"><button type="button" class="btn btn-success btn-block" onclick="location.href='@Url.Action("CreateFromRegistration", "Patient")'">@Klinik.Resources.UIMessages.NewPatient</button></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 control-label" for="inputDefault">@Klinik.Resources.UIMessages.MRNumber</label>
+                        <div class="col-md-2">
+                            @Html.TextBoxFor(x => x.MRNumber, new { @class = "form-control", @id = "tbMRNumber", @readonly = "readonly" })
+                        </div>
+                        <label class="col-md-1 control-label" for="inputDefault">@Klinik.Resources.UIMessages.KTPNumber</label>
+                        <div class="col-md-2">
+                            @Html.TextBoxFor(x => x.PatientKTPNumber, new { @class = "form-control", @id = "tbKTPNumber", @readonly = "readonly" })
+                        </div>
+                        <label class="col-md-1 control-label" for="inputDefault">
+                            @Klinik.Resources.UIMessages.Doctor
+                        </label>
+                        <div class="col-md-2">
+                            @Html.DropDownListFor(p => p.DoctorID, (IEnumerable<SelectListItem>)ViewBag.DoctorList, new { @class = "form-control", @id = "ddldoctor" })
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2"><button type="button" class="btn btn-warning btn-block">Print Card</button></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Birthdate</label>
+                        <div class="col-md-2">
+                            @Html.TextBoxFor(x => x.PatientBirthDateStr, new { @class = "form-control", @id = "tbBirthdate", @readonly = "readonly" })
+                        </div>
+                        <label class="col-md-1 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Gender</label>
+                        <div class="col-md-2">
+                            @Html.TextBoxFor(x => x.PatientGender, new { @class = "form-control", @id = "tbPatientGender", @readonly = "readonly" })
+                        </div>
+                        <label class="col-md-1 control-label" for="inputDefault">
+                            @Klinik.Resources.UIMessages.Necessity
+                        </label>
+                        <div class="col-md-2">
+                            @Html.DropDownListFor(p => p.NecessityType, (IEnumerable<SelectListItem>)ViewBag.NecessityList, new { @class = "form-control", @id = "ddlnecessity" })
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2"><button type="submit" class="btn btn-primary btn-block">@Klinik.Resources.UIMessages.Register</button></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 control-label" for="inputDefault">@Klinik.Resources.UIMessages.PatientType</label>
+                        <div class="col-md-2">
+                            @Html.TextBoxFor(x => x.PatientType, new { @class = "form-control", @id = "tbPatientType", @readonly = "readonly" })
+                        </div>
+                        <label class="col-md-1 control-label" for="inputDefault">@Klinik.Resources.UIMessages.BloodType</label>
+                        <div class="col-md-2">
+                            @Html.TextBoxFor(x => x.PatientBloodType, new { @class = "form-control", @id = "tbBloodType", @readonly = "readonly" })
+                        </div>
+                        <label class="col-md-1 control-label" for="inputDefault">
+                            @Klinik.Resources.UIMessages.RegisterType
+                        </label>
+                        <div class="col-md-2">
+                            @Html.DropDownListFor(p => p.Type, (IEnumerable<SelectListItem>)ViewBag.RegistrationTypeList, new { @class = "form-control", @id = "ddlRegisterType" })
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Address</label>
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(x => x.PatientAddress, new { @class = "form-control", @id = "tbAddress", @readonly = "readonly" })
+                        </div>
+                        <label class="col-md-1 control-label" for="inputDefault">
+                            @Klinik.Resources.UIMessages.PaymentType
+                        </label>
+                        <div class="col-md-2">
+                            @Html.DropDownListFor(p => p.PaymentType, (IEnumerable<SelectListItem>)ViewBag.PaymentTypeList, new { @class = "form-control", @id = "ddlPaymentType" })
+                        </div>
+                        <label class="col-md-1 control-label" for="inputDefault" id="lblNomor" style="display: none;">
+                            @Klinik.Resources.UIMessages.Number
+                        </label>
+                        <div class="col-md-2">
+                            @Html.TextBoxFor(x => x.PaymentNumber, new { @class = "form-control", @id = "tbNomor", @style = "display: none;" })
+                        </div>
+                    </div>
+            </section>
+        </form>
+    </div>
+}
+<div class="col-md-12">
+    <section class="panel">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a href="#" class="fa fa-caret-down"></a>
+            </div>
+            <h5 class="panel-title">
+                @Klinik.Resources.UIMessages.RegistrationList
+            </h5>
+        </header>
+        <div class="panel-body">
+            <div style="width:100%; margin:0 auto">
+                <table id="tbRegistration" class="table table-striped table-bordered dt-responsive" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>@Klinik.Resources.UIMessages.ID</th>
+                            <th>@Klinik.Resources.UIMessages.PatientName</th>
+                            <th>@Klinik.Resources.UIMessages.PoliFrom</th>
+                            <th>@Klinik.Resources.UIMessages.PoliTo</th>
+                            <th>@Klinik.Resources.UIMessages.DoctorOrParamedic</th>
+                            <th>@Klinik.Resources.UIMessages.QueueCode</th>
+                            <th>@Klinik.Resources.UIMessages.RegistrationType</th>
+                            <th>@Klinik.Resources.UIMessages.Remark</th>
+                            <th>@Klinik.Resources.UIMessages.TransactionDate</th>
+                            <th>@Klinik.Resources.UIMessages.RegistrationStatus</th>
+                            <th>@Klinik.Resources.UIMessages.Action</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Jquerys{
+    <script src="~/Scripts/jquery.signalR-2.4.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+}
+
+@section Scripts {
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/MvcDatalist/mvc-datalist.js"></script>
+    <script>
+        [].forEach.call(document.getElementsByClassName('datalist'), function (element) {
+            new MvcDatalist(element);
+        });
+
+        new MvcDatalist(document.querySelector('.datalist'), {
+            events: {
+                select: function (data, triggerChanges) {
+                    for (var i = 0; i < data.length; i++) {
+                        var mrNumber = document.getElementById("tbMRNumber");
+                        if (mrNumber != null) { mrNumber.value = data[i].MRNumber; }
+                        var ktpNumber = document.getElementById("tbKTPNumber");
+                        if (ktpNumber != null) { ktpNumber.value = data[i].KTPNumber; }
+                        var bpjsNumber = document.getElementById("tbBPJSNumber");
+                        if (bpjsNumber != null) { bpjsNumber.value = data[i].BPJSNumber; }
+                        var birthDate = document.getElementById("tbBirthdate");
+                        if (birthDate != null) { birthDate.value = data[i].Birthdate; }
+                        var gender = document.getElementById("tbPatientGender");
+                        if (gender != null) { gender.value = data[i].Gender; }
+                        var patientType = document.getElementById("tbPatientType");
+                        if (patientType != null) { patientType.value = data[i].PatientType; }
+                        var bloodType = document.getElementById("tbBloodType");
+                        if (bloodType != null) { bloodType.value = data[i].BloodType; }
+                        var address = document.getElementById("tbAddress");
+                        if (address != null) { address.value = data[i].Address; }
+                    }
+                }
+            }
+        });
+    </script>
+    <script type="text/javascript">
+    $(function () {
+        // Reference the hub.
+        var notifFromHub = $.connection.registrationHub;
+
+        // Start the connection.
+        $.connection.hub.start().done(function () {
+            //ReloadData();
+        });
+
+        // Notify while anyChanges.
+        notifFromHub.client.updatedClients = function () {
+            ReloadData();
+        };
+    });
+
+    function ReloadData() {
+        location.reload(true);
+    }
+
+    $(document).ready(function () {
+
+        $("#ddlPaymentType").change(function () {
+            var paymentId = $("#ddlPaymentType").val();
+            var lbl = document.getElementById("lblNomor");
+            var tb = document.getElementById("tbNomor");
+
+            if (paymentId == 1 || paymentId == 4) {
+                lbl.style.display = "none";
+                tb.style.display = "none";
+            } else {
+                lbl.style.display = "block";
+                tb.style.display = "block";
+            }
+        });
+
+        $("#ddlpolito").change(function () {
+            $.get("/Loket/GetDoctorList", { PoliId: $("#ddlpolito").val() }, function (data) {
+                $("#ddldoctor").empty();
+                $.each(data, function (index, row) {
+                    $("#ddldoctor").append('<option value="' + row.ID + '">' + row.Name + '</option>');
+                });
+            });
+        });
+
+        $('#tbRegistration').dataTable({
+            "autoWidth": false,
+            "processing": true,
+            "serverSide": true,
+            "filter": true,
+            "orderMulti": false,
+            "pageLength": 10,
+            "ajax": {
+                "url": "@Url.Action("GetRegistrationDataByPoliID", "Loket", new { poliId = Model.PoliFromID })",
+                "type": "POST",
+                "datatype": "json"
+            },
+            "columnDefs":
+                [{
+                    "targets": [0],
+                    "visible": false,
+                    "searchable": false,
+                },
+                {
+                    "targets": [1],
+                    "searchable": true,
+                    "orderable": true
+                },
+                {
+                    "targets": [2],
+                    "searchable": true,
+                    "orderable": true
+                },
+                {
+                    "targets": [3],
+                    "searchable": true,
+                    "orderable": true
+                },
+                {
+                    "targets": [4],
+                    "searchable": false,
+                    "orderable": false
+                },
+                {
+                    "targets": [5],
+                    "searchable": false,
+                    "orderable": false
+                },
+                {
+                    "targets": [6],
+                    "searchable": false,
+                    "orderable": false
+                },
+                {
+                    "targets": [7],
+                    "searchable": false,
+                    "orderable": false
+                },
+                {
+                    "targets": [8],
+                    "searchable": false,
+                    "orderable": false
+                },
+                {
+                    "targets": [9],
+                    "searchable": true,
+                    "orderable": true
+                },
+                {
+                    "targets": [10],
+                    "searchable": true,
+                    "orderable": true
+                }
+                ],
+
+            "columns": [
+                { "data": "Id", "name": "Id", "autoWidth": false },
+                {
+                    "render": function (data, type, full, meta) { return '<a href="/Loket/Edit?id=' + full.Id + '">'+ full.PatientName+'</a>'; }
+                },
+                { "data": "PoliFromName", "name": "PoliFromName", "autoWidth": true },
+                { "data": "PoliToName", "name": "PoliToName", "autoWidth": true },
+                { "data": "DoctorStr", "name": "DoctorStr", "autoWidth": true },
+                { "data": "SortNumberCode", "name": "SortNumberCode", "autoWidth": true },
+                { "data": "TypeStr", "name": "TypeStr", "autoWidth": true },
+                { "data": "Remark", "name": "Remark", "autoWidth": true },
+                { "data": "TransactionDateStr", "name": "TransactionDateStr", "autoWidth": true },
+                { "data": "StatusStr", "name": "StatusStr", "autoWidth": true },
+                {
+                    "render": function (data, type, full, meta) {
+                        return "<button class='btn btn-success' onclick='Process(" + full['Id'] + ")' >@Klinik.Resources.UIMessages.Process</button>" +
+                            " | <button class='btn btn-warning' onclick='Hold(" + full['Id'] + ")' >@Klinik.Resources.UIMessages.Hold</button>" +
+                            " | <button class='btn btn-danger' onclick='Finish(" + full['Id'] + ")' >@Klinik.Resources.UIMessages.Finish</button>";
+                    }
+                }
+            ]
+        });
+    });
+
+    var _status, _message, _temp;
+    var _arrMsg = [];
+    toastr.options = {
+        "closeButton": true,
+        "positionClass": "toast-top-full-width",
+        "onclick": null,
+        "showDuration": "0",
+        "hideDuration": "0",
+        "timeOut": "0",
+        "showMethod": "fadeIn"
+    };
+
+    var _temp = "@ViewBag.Response";
+    var _arrMsg = _temp.split(";");
+
+    if (_arrMsg.length > 1) {
+        if (_arrMsg[0] == "True") {
+            toastr.options.closeButton = false;
+            toastr.options.timeOut = 2000;
+            toastr.success(_arrMsg[1]);
+        }
+        else {
+            toastr.options.closeButton = true;
+            toastr.options.timeOut = 0;
+            toastr.error(_arrMsg[1]);
+        }
+    }
+
+    var Process = function (ID) {
+        var r = confirm("@Klinik.Resources.UIMessages.ProcessConfirmation");
+        if (r == true) {
+            ProcessPatient(ID);
+        }
+        return false;
+    }
+
+    function ProcessPatient(Id) {
+        $.ajax({
+            url: '/Loket/ProcessRegistration?id=' + Id,
+            type: 'POST',
+            success: function (result) {
+                if (result.Status) {
+                    toastr.options.closeButton = false;
+                    toastr.options.timeOut = 2000;
+                    location.reload();
+                    toastr.success(result.Message);
+                }
+                else {
+                    toastr.error(result.Message);
+                }
+            }
+        });
+    }
+
+    var Hold = function (ID) {
+        var r = confirm("@Klinik.Resources.UIMessages.HoldConfirmation");
+        if (r == true) {
+            HoldPatient(ID);
+        }
+        return false;
+    }
+
+    function HoldPatient(Id) {
+        $.ajax({
+            url: '/Loket/HoldRegistration?id=' + Id,
+            type: 'POST',
+            success: function (result) {
+                if (result.Status) {
+                    toastr.options.closeButton = false;
+                    toastr.options.timeOut = 2000;
+                    location.reload();
+                    toastr.success(result.Message);
+                }
+                else {
+                    toastr.error(result.Message);
+                }
+            }
+        });
+    }
+
+    var Finish = function (ID) {
+        var r = confirm("@Klinik.Resources.UIMessages.FinishConfirmation");
+        if (r == true) {
+            FinishPatient(ID);
+        }
+        return false;
+    }
+
+    function FinishPatient(Id) {
+        $.ajax({
+            url: '/Loket/FinishRegistration?id=' + Id,
+            type: 'POST',
+            success: function (result) {
+                if (result.Status) {
+                    toastr.options.closeButton = false;
+                    toastr.options.timeOut = 2000;
+                    location.reload();
+                    toastr.success(result.Message);
+                }
+                else {
+                    toastr.error(result.Message);
+                }
+            }
+        });
+    }
+    </script>
+}
+

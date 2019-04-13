@@ -1,0 +1,157 @@
+﻿@model Klinik.Entities.MasterData.DoctorModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="panel">
+    <header class="panel-heading">
+        <div class="panel-actions">
+            <a href="#" class="fa fa-caret-down"></a>
+        </div>
+        <h5 class="panel-title">@Klinik.Resources.UIMessages.EditParamedicForm</h5>
+    </header>
+    <div class="panel-body">
+        <form class="form-horizontal form-bordered" method="post" action="/Paramedic/Edit">
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Code</label>
+                <div class="col-md-4">
+                    @Html.HiddenFor(x => x.Id)
+                    @Html.HiddenFor(x => x.TypeID)
+                    @Html.TextBoxFor(x => x.Code, new { @class = "form-control", @id = "tbCode" })
+                    @Html.ValidationMessageFor(m => m.Code, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Name</label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @id = "tbName" })
+                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.ParamedicType
+                </label>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(p => p.SpecialistID, (IEnumerable<SelectListItem>)ViewBag.DoctorTypes, new { @class = "form-control", @id = "ddlParamedictype" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.KTPNumber</label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.KTPNumber, new { @class = "form-control", @id = "tbktpnumber" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.STRNumber
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.STRNumber, new { @class = "form-control", @id = "tbstrnumber" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.ValidFrom
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.STRValidFrom, "{0:dd/MM/yyyy}", new { @class = "form-control", @id = "tbValidFrom" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.ValidTo
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.STRValidTo, "{0:dd/MM/yyyy}", new { @class = "form-control", @id = "tbValidTo" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.Address
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.Address, new { @class = "form-control", @id = "tbAddress" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.HPNumber
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.HPNumber, new { @class = "form-control", @id = "tbHpNumber" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Email</label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @id = "tbEmail" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.Remark
+                </label>
+                <div class="col-md-4">
+                    @Html.TextAreaFor(x => x.Remark, new { @class = "form-control", @id = "tbRemark" })
+                </div>
+            </div>
+            <br />
+            <footer class="panel-footer">
+                <button type="submit" class="btn btn-primary">@Klinik.Resources.UIMessages.Save</button>
+                <button type="reset" id="btnreset" class="btn btn-default">@Klinik.Resources.UIMessages.Back</button>
+            </footer>
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnreset').click(function (e) {
+             window.location.href = "/Paramedic/Index";
+        });
+
+        $('#tbValidFrom').datepicker({
+            format: "dd/mm/yyyy",
+            changeMonth: true,
+            changeYear: true
+        });
+
+        $('#tbValidTo').datepicker({
+            format: "dd/mm/yyyy",
+            changeMonth: true,
+            changeYear: true
+        });
+
+        $('#ddlParamedictype').select2();
+
+        toastr.options = {
+            "closeButton": false,
+            "positionClass": "toast-top-full-width",
+            "onclick": null,
+            "showDuration": "0",
+            "hideDuration": "0",
+            "timeOut": "2000",
+            "showMethod": "fadeIn"
+        };
+
+        var _temp="@ViewBag.Response";
+        var _arrMsg = _temp.split(";");
+
+        if (_arrMsg.length > 1) {
+            if (_arrMsg[0] == "True") {
+                toastr.success(_arrMsg[1]);
+            }
+            else {
+                toastr.options.closeButton = true;
+                toastr.options.timeOut = 0;
+                toastr.error(_arrMsg[1]);
+            }
+        }
+    });
+    </script>
+}

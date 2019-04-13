@@ -1,0 +1,86 @@
+﻿@model Klinik.Entities.MasterData.PrivilegeModel
+
+@{
+    ViewBag.Title = "CreateOrEditPrivilege";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="panel">
+    <header class="panel-heading">
+        <div class="panel-actions">
+            <a href="#" class="fa fa-caret-down"></a>
+        </div>
+        <h5 class="panel-title">Form @ViewBag.ActionType Privilege</h5>
+    </header>
+    <div class="panel-body">
+        <form class="form-horizontal form-bordered" method="post" action="/MasterData/CreateOrEditPrivilege">
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Privilege</label>
+                <div class="col-md-4">
+                    @Html.HiddenFor(x => x.Id)
+                    @Html.TextBoxFor(x => x.Privilige_Name, new { @class = "form-control", @id = "tbPrivilege" })
+                    @Html.ValidationMessageFor(m => m.Privilige_Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Description</label>
+                <div class="col-md-4">
+                    @Html.TextAreaFor(x => x.Privilege_Desc, new { @class = "form-control", @id = "tbDesc" })
+                    @Html.ValidationMessageFor(m => m.Privilege_Desc, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Menu</label>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(x => x.MenuID, (IEnumerable<SelectListItem>)ViewBag.Menu, new { @class = "form-control", @id = "ddlMenu" })
+                </div>
+            </div>
+            <br />
+            <footer class="panel-footer">
+                <button type="submit" class="btn btn-primary">@Klinik.Resources.UIMessages.Save</button>
+                <button type="reset" id="btnreset" class="btn btn-default">@Klinik.Resources.UIMessages.Back</button>
+            </footer>
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+    function clearFields() {
+        $('#tbPrivilege').val('');
+        $('#tbDesc').val('');
+    }
+    $(document).ready(function () {
+        $('#btnreset').click(function (e) {
+            window.location.href = "/MasterData/PrivilegeList";
+        });
+
+        $('#ddlMenu').select2();
+
+        toastr.options = {
+            "closeButton": false,
+            "positionClass": "toast-top-full-width",
+            "onclick": null,
+            "showDuration": "0",
+            "hideDuration": "0",
+            "timeOut": "2000",
+            "showMethod": "fadeIn"
+        };
+
+        var _temp="@ViewBag.Response";
+        var _arrMsg = _temp.split(";");
+
+        if (_arrMsg.length > 1) {
+            if (_arrMsg[0] == "True") {
+                toastr.success(_arrMsg[1]);
+            }
+            else {
+                toastr.options.closeButton = true;
+                toastr.options.timeOut = 0;
+                toastr.error(_arrMsg[1]);
+            }
+        }
+    });
+
+    </script>
+}

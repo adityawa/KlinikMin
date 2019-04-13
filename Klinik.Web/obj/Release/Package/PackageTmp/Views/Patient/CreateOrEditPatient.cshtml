@@ -1,0 +1,314 @@
+﻿@model Klinik.Entities.MasterData.PatientModel
+
+@{
+    ViewBag.Title = "CreateNewPatient";
+}
+
+<section class="panel">
+    <header class="panel-heading">
+        <div class="panel-actions">
+            <a href="#" class="fa fa-caret-down"></a>
+        </div>
+        <h5 class="panel-title">Form @ViewBag.ActionType Patient</h5>
+    </header>
+    <div class="panel-body">
+        <form class="form-horizontal form-bordered" method="post" action="/Patient/CreateOrEditPatient" enctype="multipart/form-data">
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Employee</label>
+                <div class="col-md-4">
+                    @Html.HiddenFor(x => x.Id)
+                    @Html.HiddenFor(x => x.IsFromRegistration)
+                    @Html.DropDownListFor(p => p.EmployeeID, (IEnumerable<SelectListItem>)ViewBag.EmpReff, new { @class = "form-control", @id = "ddlEmpReff" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.FamilyRelationship</label>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(p => p.familyRelationshipID, (IEnumerable<SelectListItem>)ViewBag.Relation, new { @class = "form-control", @id = "ddlRelation" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.Name
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @id = "tbName" })
+                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.Gender
+                </label>
+                <div class="col-md-4">
+                    @Html.RadioButtonFor(m => m.Gender, "M", new { @class = "form-check-input", @id = "rdbMale" }) @Klinik.Resources.UIMessages.Male
+                    &nbsp;
+                    @Html.RadioButtonFor(m => m.Gender, "F", new { @class = "form-check-input", @id = "rdbFeMale", @text = "Female" }) @Klinik.Resources.UIMessages.Female
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.MaritalStatus
+                </label>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(p => p.MaritalStatus, (IEnumerable<SelectListItem>)ViewBag.Marital, new { @class = "form-control", @id = "ddlMarital" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.Birthdate
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.BirthDateStr, "{0:dd/MM/yyyy}", new { @class = "form-control", @id = "tbBirthDate" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.KTPNumber
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.KTPNumber, new { @class = "form-control", @id = "tbKTP" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.Address
+                </label>
+                <div class="col-md-4">
+                    @Html.TextAreaFor(x => x.Address, new { @class = "form-control", @id = "tbAddress" })
+                    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.City
+                </label>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(p => p.CityID, (IEnumerable<SelectListItem>)ViewBag.City, new { @class = "form-control", @id = "ddlCity" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Type</label>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(p => p.Type, (IEnumerable<SelectListItem>)ViewBag.PatientType, new { @class = "form-control", @id = "ddlPatientType" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.BPJSNo</label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.BPJSNumber, "{0:dd/MM/yyyy}", new { @class = "form-control", @id = "tbBPJS" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.BloodType</label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.BloodType, new { @class = "form-control", @id = "tbBlood" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.CurrentAddress
+                </label>
+                <div class="col-md-4">
+                    @Html.TextAreaFor(x => x.PatientClinic.TempAddress, new { @class = "form-control", @id = "tbTempAddress" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.City
+                </label>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(p => p.PatientClinic.TempCityId, (IEnumerable<SelectListItem>)ViewBag.City, new { @class = "form-control", @id = "ddlTempCity" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.ReffPerson</label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.PatientClinic.RefferencePerson, new { @class = "form-control", @id = "tbReffPerson" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.ReffPersonNo</label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.PatientClinic.RefferenceNumber, new { @class = "form-control", @id = "tbReffNo" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.ReffRelation</label>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(p => p.PatientClinic.RefferenceRelation, (IEnumerable<SelectListItem>)ViewBag.ReffRelation, new { @class = "form-control", @id = "ddlReffRelation" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.OldMRNumber</label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.PatientClinic.OldMRNumber, new { @class = "form-control", @id = "tbOldMRNo" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.UploadedPhoto</label>
+                <div class="col-md-10">
+                    @Html.DisplayFor(x => x.Photo.ActualName, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Photo", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.file, new { @type = "file", @Id = "PhotoUpload", @name = "PhotoUpload", @onchange = "previewImage(event)" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Existing photo (if any)", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @if (Model != null && Model.Photo != null)
+                    {
+                        <img src="@Url.Content("~/fileDoc/Photo/"+ @Model.Photo.ActualName)"
+                             alt="" id="ImageBox"
+                             class="img-thumbnail" width="280" />
+                    }
+                    else
+                    {
+                        <img alt="" id="ImageBox"
+                             class="img-thumbnail" width="280" />
+                    }
+                </div>
+            </div>
+            <br />
+            <footer class="panel-footer">
+                <button type="submit" class="btn btn-primary">@Klinik.Resources.UIMessages.Save</button>
+                <button type="button" id="btnreset" class="btn btn-default" onclick="GoBack(@Model.IsFromRegistration)">@Klinik.Resources.UIMessages.Back</button>
+            </footer>
+        </form>
+    </div>
+</section>
+
+<div class="modal fade" id="cnfMsg" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <label class="control-label" id="lblconfMsg"></label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnExData" class="btn btn-default" data-dismiss="modal">@Klinik.Resources.UIMessages.UseExistingGoLoket</button>
+                <button type="button" id="btnNewData" class="btn btn-primary">@Klinik.Resources.UIMessages.Replace</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#ddlEmpReff').select2();
+        $('#ddlRelation').select2();
+        $('#ddlMarital').select2();
+        $('#ddlCity').select2();
+        $('#ddlPatientType').select2();
+        $('#ddlTempCity').select2();
+        $('#ddlReffRelation').select2();
+
+        $('#tbBirthDate').datepicker({
+            format: "dd/mm/yyyy",
+            changeMonth: true,
+            changeYear: true
+        });
+
+        $('#btnExData').click(function (e) {
+            UseExistingDataGoLoket();
+        });
+
+        $('#btnNewData').click(function (e) {
+            ReplaceDataGoLoket();
+        });
+        toastr.options = {
+            "closeButton": false,
+            "positionClass": "toast-top-full-width",
+            "onclick": null,
+            "showDuration": "0",
+            "hideDuration": "0",
+            "timeOut": "2000",
+            "showMethod": "fadeIn"
+        };
+
+        var _temp="@ViewBag.Response";
+        var _arrMsg = _temp.split(";");
+
+        var _confirmation = "@ViewBag.Confirmation";
+        var _arrConf = _confirmation.split(";");
+
+        if (_arrConf[0] != "True") {
+            if (_arrMsg.length > 1) {
+                if (_arrMsg[0] == "True") {
+                    toastr.success(_arrMsg[1]);
+                }
+                else {
+                    toastr.options.closeButton = true;
+                    toastr.options.timeOut = 0;
+                    toastr.error(_arrMsg[1]);
+                }
+            }
+        }
+
+        var _confirmation = "@ViewBag.Confirmation";
+        var _arrConf = _confirmation.split(";");
+        if (_arrConf[0] == "True") {
+            $('[id$=lblconfMsg]').text(_arrConf[1]);
+            $('#cnfMsg').modal({
+                backdrop:'static'
+            });
+        }
+    });
+
+    function previewImage(event) {
+        // Get a reference to the image element
+        var image = document.querySelector("#ImageBox");
+        // Set its source to the file in the <input type=file element
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+
+    function UseExistingDataGoLoket() {
+        $.ajax({
+            url: '/Patient/UseExistingPatientData?isUseExisting=yes' ,
+            type: 'POST',
+            success: function (result) {
+                if (result.Status) {
+                    window.location.href="@Url.Action("Index", "Loket")";
+                }
+                else {
+                    toastr.error(result.Message);
+                }
+            }
+        });
+    };
+
+    function ReplaceDataGoLoket() {
+        $.ajax({
+            url: '/Patient/UseExistingPatientData?isUseExisting=no',
+            type: 'POST',
+            success: function (result) {
+                if (result.Status) {
+                    window.location.href="@Url.Action("Index", "Loket")";
+                }
+                else {
+                    toastr.error(result.Message);
+                }
+            }
+        });
+    };
+
+    var GoBack = function (isFromRegistration) {
+            if (isFromRegistration) {
+                window.location.href = "/Loket/Index";
+            } else {
+                window.location.href = "/Patient/PasienList";
+            }
+    }
+    </script>
+}

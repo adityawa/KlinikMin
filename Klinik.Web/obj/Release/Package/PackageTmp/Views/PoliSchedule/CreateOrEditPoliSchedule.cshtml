@@ -1,0 +1,151 @@
+﻿@model Klinik.Entities.PoliSchedules.PoliScheduleModel
+
+@{
+    ViewBag.Title = "CreateOrEditPoliSchedule";
+}
+
+<section class="panel">
+    <header class="panel-heading">
+        <div class="panel-actions">
+            <a href="#" class="fa fa-caret-down"></a>
+        </div>
+        <h5 class="panel-title">Form @ViewBag.ActionType Poli Schedule</h5>
+    </header>
+    <div class="panel-body">
+        <form class="form-horizontal form-bordered" method="post" action="/PoliSchedule/CreateOrEditPoliSchedule">
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Clinic</label>
+                <div class="col-md-4">
+                    @Html.HiddenFor(x => x.Id)
+                    @Html.HiddenFor(x => x.ReffID)
+                    @if (Model == null || Model.ReffID == 0)
+                    {
+                        @Html.DropDownListFor(x => x.ClinicID, (IEnumerable<SelectListItem>)ViewBag.Clinics, new { @class = "form-control", @id = "ddlclinic" })
+                    }
+                    else
+                    {
+                        @Html.DropDownListFor(x => x.ClinicID, (IEnumerable<SelectListItem>)ViewBag.Clinics, new { @class = "form-control", @id = "ddlclinic", @disabled = "disabled" })
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Poli</label>
+                <div class="col-md-4">
+                    @if (Model == null || Model.ReffID == 0)
+                    {
+                        @Html.DropDownListFor(x => x.PoliID, (IEnumerable<SelectListItem>)ViewBag.Polis, new { @class = "form-control", @id = "ddlpoli" })
+                    }
+                    else
+                    {
+                        @Html.DropDownListFor(x => x.PoliID, (IEnumerable<SelectListItem>)ViewBag.Polis, new { @class = "form-control", @id = "ddlpoli", @disabled = "disabled" })
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.Doctor
+                </label>
+                <div class="col-md-4">
+                    @if (Model == null || Model.ReffID == 0)
+                    {
+                        @Html.DropDownListFor(x => x.DoctorID, (IEnumerable<SelectListItem>)ViewBag.Doctors, new { @class = "form-control", @id = "ddldoctor" })
+                    }
+                    else
+                    {
+                        @Html.DropDownListFor(x => x.DoctorID, (IEnumerable<SelectListItem>)ViewBag.Doctors, new { @class = "form-control", @id = "ddldoctor", @disabled = "disabled" })
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.StartDate</label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.StartDate, "{0:dd/MM/yyyy}", new { @class = "form-control", @id = "tbStartDate" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.EndDate
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.EndDate, "{0:dd/MM/yyyy}", new { @class = "form-control", @id = "tbEndDate" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.Status
+                </label>
+                <div class="col-md-4">
+                    @if (Model == null || Model.ReffID == 0)
+                    {
+                        @Html.RadioButtonFor(m => m.Status, "1", new { @class = "form-check-input", @id = "rdbActive", @Checked = "checked" }) @Klinik.Resources.UIMessages.Active
+                        @:&nbsp;
+                        @Html.RadioButtonFor(m => m.Status, "0", new { @class = "form-check-input", @id = "rdbNonActive" }) @Klinik.Resources.UIMessages.NonActive
+                    }
+                    else
+                    {
+                        @Html.RadioButtonFor(m => m.Status, "1", new { @class = "form-check-input", @id = "rdbActive", @Checked = "checked", @disabled = "disabled" }) @Klinik.Resources.UIMessages.Active
+                        @:&nbsp;
+                        @Html.RadioButtonFor(m => m.Status, "0", new { @class = "form-check-input", @id = "rdbNonActive", @disabled = "disabled" }) @Klinik.Resources.UIMessages.NonActive
+                    }
+                </div>
+            </div>
+            <br />
+            <footer class="panel-footer">
+                <button type="submit" class="btn btn-primary">@Klinik.Resources.UIMessages.Save</button>
+                <button type="reset" id="btnreset" class="btn btn-default">@Klinik.Resources.UIMessages.Back</button>
+            </footer>
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnreset').click(function (e) {
+             window.location.href = "/PoliSchedule/Index";
+        });
+
+        $('#ddlclinic').select2();
+        $('#ddlpoli').select2();
+        $('#ddldoctor').select2();
+        $('#tbStartDate').datepicker({
+            format: "dd/mm/yyyy",
+            changeMonth: true,
+            ignoreReadonly: true,
+            changeYear: true
+        });
+
+        $('#tbEndDate').datepicker({
+            format: "dd/mm/yyyy",
+            changeMonth: true,
+            ignoreReadonly: true,
+            changeYear: true
+        });
+
+        toastr.options = {
+            "closeButton": false,
+            "positionClass": "toast-top-full-width",
+            "onclick": null,
+            "showDuration": "0",
+            "hideDuration": "0",
+            "timeOut": "2000",
+            "showMethod": "fadeIn"
+        };
+
+        var _temp="@ViewBag.Response";
+        var _arrMsg = _temp.split(";");
+
+        if (_arrMsg.length > 1) {
+            if (_arrMsg[0] == "True") {
+                toastr.success(_arrMsg[1]);
+            }
+            else {
+                toastr.options.closeButton = true;
+                toastr.options.timeOut = 0;
+                toastr.error(_arrMsg[1]);
+            }
+        }
+    });
+
+    </script>
+}

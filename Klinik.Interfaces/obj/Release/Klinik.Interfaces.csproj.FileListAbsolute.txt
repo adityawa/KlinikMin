@@ -1,0 +1,6 @@
+D:\Adit\Project\Private\STU\Klinik\Klinik.Interfaces\bin\Release\Klinik.Interfaces.dll
+D:\Adit\Project\Private\STU\Klinik\Klinik.Interfaces\bin\Release\Klinik.Interfaces.pdb
+D:\Adit\Project\Private\STU\Klinik\Klinik.Interfaces\obj\Release\Klinik.Interfaces.csprojAssemblyReference.cache
+D:\Adit\Project\Private\STU\Klinik\Klinik.Interfaces\obj\Release\Klinik.Interfaces.csproj.CoreCompileInputs.cache
+D:\Adit\Project\Private\STU\Klinik\Klinik.Interfaces\obj\Release\Klinik.Interfaces.dll
+D:\Adit\Project\Private\STU\Klinik\Klinik.Interfaces\obj\Release\Klinik.Interfaces.pdb

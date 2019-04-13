@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Inpex - MMS</title>
+
+    <!-- Bootstrap Core CSS -->
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- MetisMenu CSS -->
+    <link href="~/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+
+    <!-- Timeline CSS -->
+    <link href="~/dist/css/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/dist/css/sb-admin-3.css" rel="stylesheet">
+
+
+
+    <!-- Custom Fonts -->
+
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <!-- easy-->
+    <link href="~/dist/css/easy.css" rel="stylesheet" type="text/css">
+
+
+    <!-- jQuery -->
+
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <!-- DateTimePicker-->
+    <link href="~/dist/css/bootstrap-datepicker.css" rel="stylesheet">
+    <script src="~/dist/js/bootstrap-datepicker.js"></script>
+
+    <!-- DateTimePicker-->
+    <link href="~/dist/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <script src="~/dist/js/moment.js"></script>
+    <script src="~/dist/js/bootstrap-datetimepicker.js"></script>
+
+    <script src="~/js/easy.js"></script>
+    <script src="~/Scripts/Chart.js"></script>
+
+
+
+    <style>
+        /* bootstrap.css */
+        * {
+            font-size: 13px;
+            line-height: 0.6;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <!-- Navigation -->
+        <a class="col-md-3" id="nav-img" href='@Url.Action("index","home")'>
+            <img runat="server" id="imgDetails1" src="~/Content/images/sidebar.jpg" />
+        </a>
+        <nav id="page-navigation" class="navbar navbar-default" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header1" id="div-title">
+
+                <img runat="server" id="imgDetails" src="~/Content/images/skkmigas-logo.jpg" />
+                <img runat="server" id="imgDetails" src="~/Content/images/inpex-logo.png" />
+
+            </div>
+
+
+
+        </nav>
+
+        <div id="page-wrapper" class=" col-lg-6">
+            @RenderBody()
+        </div>
+        <!-- /#page-wrapper -->
+
+
+
+
+        <div class="modal fade" id="popModal" tabindex="-1" role="dialog" aria-labelledby="popModalTitle" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="popModalTitle"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <p id="popModalMessage"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="btn-popup-cancel">Cancel</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn-popup-ok">OK</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+
+
+            <!-- DIV MODAL END-->
+
+        </div>
+    </div>
+
+
+    <script src="~/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="~/dist/js/sb-admin-2.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+        });
+    </script>
+
+
+    @Scripts.Render("~/bundles/dropzonescripts")
+    @Scripts.Render("~/bundles/chosen")
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

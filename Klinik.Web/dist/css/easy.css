@@ -1,0 +1,14 @@
+﻿.easy-form-label{
+    width:150px;
+    text-align:left;
+}
+
+option:disabled
+{
+    color: black;
+    font-weight: bold
+}
+
+.modal-wide .modal-dialog {
+  width: 80%; /* or whatever you wish */
+}

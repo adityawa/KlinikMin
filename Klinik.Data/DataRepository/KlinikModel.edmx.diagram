@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="05805935269c492f8472b7c6e1a6f351" Name="Diagram1">
+        <EntityTypeShape EntityType="klinikModel.AppConfig" Width="1.5" PointX="10.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.City" Width="1.5" PointX="12.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.Clinic" Width="1.5" PointX="3.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.Employee" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.EmployeeAssignment" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.EmployeeStatu" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.FamilyRelationship" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.FileArchieve" Width="1.5" PointX="0.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.GeneralMaster" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.Log" Width="1.5" PointX="14.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.Medicine" Width="1.5" PointX="15.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.Menu" Width="1.5" PointX="8.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.Organization" Width="1.5" PointX="6" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.OrganizationPrivilege" Width="1.5" PointX="13.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.OrganizationRole" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.PasswordHistory" Width="1.5" PointX="5.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.Privilege" Width="1.5" PointX="11" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.Product" Width="1.5" PointX="7.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.ProductCategory" Width="1.5" PointX="15.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.ProductMedicine" Width="1.5" PointX="9.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.ProductUnit" Width="1.5" PointX="11.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.RolePrivilege" Width="1.5" PointX="13.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.sysdiagram" Width="1.5" PointX="15.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.User" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="klinikModel.UserRole" Width="1.5" PointX="10.5" PointY="5.875" IsExpanded="true" />
+        <AssociationConnector Association="klinikModel.FK_Organization_Clinic" ManuallyRouted="false" />
+        <AssociationConnector Association="klinikModel.FK_Employee_EmployeeStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="klinikModel.FK_Employee_FamilyRelationship" ManuallyRouted="false" />
+        <AssociationConnector Association="klinikModel.FK_Employee_GeneralMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="klinikModel.FK_EmployeeAssignment_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="klinikModel.FK_User_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="klinikModel.FK_EmployeeAssignment_EmployeeStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="klinikModel.FK_Privilege_Menu" ManuallyRouted="false" />
+        <AssociationConnector Association="klinikModel.FK_OrganizationPrivilege_Organization" ManuallyRouted="false" />
+        <AssociationConnector Association="klinikModel.FK_OrganizationRole_Organization" ManuallyRouted="false" />
+        <AssociationConnector Association="klinikModel.FK_User_Organization" ManuallyRouted="false" />
+        <AssociationConnector Association="klinikModel.FK_OrganizationPrivilege_Privilege" ManuallyRouted="false" />
+        <AssociationConnector Association="klinikModel.FK_RolePrivilege_OrganizationRole" ManuallyRouted="false" />
+        <AssociationConnector Association="klinikModel.FK_UserRole_OrganizationRole" ManuallyRouted="false" />
+        <AssociationConnector Association="klinikModel.FK_RolePrivilege_Privilege" ManuallyRouted="false" />
+        <AssociationConnector Association="klinikModel.FK_UserRole_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

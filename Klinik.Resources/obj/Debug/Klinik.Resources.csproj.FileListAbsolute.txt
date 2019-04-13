@@ -1,0 +1,16 @@
+D:\Adit\Project\Private\STU\Klinik\Klinik.Resources\bin\Debug\Klinik.Resources.dll
+D:\Adit\Project\Private\STU\Klinik\Klinik.Resources\bin\Debug\Klinik.Resources.pdb
+D:\Adit\Project\Private\STU\Klinik\Klinik.Resources\obj\Debug\Klinik.Resources.Messages.resources
+D:\Adit\Project\Private\STU\Klinik\Klinik.Resources\obj\Debug\Klinik.Resources.UIMessages.resources
+D:\Adit\Project\Private\STU\Klinik\Klinik.Resources\obj\Debug\Klinik.Resources.csproj.GenerateResource.cache
+D:\Adit\Project\Private\STU\Klinik\Klinik.Resources\obj\Debug\Klinik.Resources.csproj.CoreCompileInputs.cache
+D:\Adit\Project\Private\STU\Klinik\Klinik.Resources\obj\Debug\Klinik.Resources.dll
+D:\Adit\Project\Private\STU\Klinik\Klinik.Resources\obj\Debug\Klinik.Resources.pdb
+D:\Adit\Project\Private\STU\KlinikMin\Klinik.Resources\bin\Debug\Klinik.Resources.dll
+D:\Adit\Project\Private\STU\KlinikMin\Klinik.Resources\bin\Debug\Klinik.Resources.pdb
+D:\Adit\Project\Private\STU\KlinikMin\Klinik.Resources\obj\Debug\Klinik.Resources.Messages.resources
+D:\Adit\Project\Private\STU\KlinikMin\Klinik.Resources\obj\Debug\Klinik.Resources.UIMessages.resources
+D:\Adit\Project\Private\STU\KlinikMin\Klinik.Resources\obj\Debug\Klinik.Resources.csproj.GenerateResource.cache
+D:\Adit\Project\Private\STU\KlinikMin\Klinik.Resources\obj\Debug\Klinik.Resources.csproj.CoreCompileInputs.cache
+D:\Adit\Project\Private\STU\KlinikMin\Klinik.Resources\obj\Debug\Klinik.Resources.dll
+D:\Adit\Project\Private\STU\KlinikMin\Klinik.Resources\obj\Debug\Klinik.Resources.pdb

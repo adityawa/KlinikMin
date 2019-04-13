@@ -1,0 +1,1681 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KlinikDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AppConfig">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Value" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeID" Type="bigint" />
+    <Property Name="ClinicID" Type="bigint" Nullable="false" />
+    <Property Name="DoctorID" Type="int" />
+    <Property Name="RequirementID" Type="int" />
+    <Property Name="AppointmentDate" Type="datetime" Nullable="false" />
+    <Property Name="MCUPackageID" Type="int" />
+    <Property Name="PoliID" Type="int" />
+    <Property Name="Status" Type="smallint" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Province" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Kelurahan" Type="nvarchar" MaxLength="50" />
+    <Property Name="Kecamatan" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Clinic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="10" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="Address" Type="varchar" MaxLength="500" />
+    <Property Name="LegalNumber" Type="varchar" MaxLength="50" />
+    <Property Name="LegalDate" Type="date" />
+    <Property Name="ContactNumber" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Lat" Type="float" />
+    <Property Name="Long" Type="float" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="ClinicType" Type="smallint" />
+    <Property Name="ReffID" Type="int" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Doctor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="char" MaxLength="10" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="SpecialistID" Type="int" />
+    <Property Name="TypeID" Type="int" />
+    <Property Name="KTPNumber" Type="varchar" MaxLength="50" />
+    <Property Name="STRNumber" Type="varchar" MaxLength="50" />
+    <Property Name="STRValidFrom" Type="datetime" />
+    <Property Name="STRValidTo" Type="datetime" />
+    <Property Name="Address" Type="varchar" MaxLength="200" />
+    <Property Name="HPNumber" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Remark" Type="varchar" MaxLength="300" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="EmployeeID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DoctorClinic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="char" MaxLength="10" />
+    <Property Name="ClinicID" Type="bigint" Nullable="false" />
+    <Property Name="DoctorID" Type="int" Nullable="false" />
+    <Property Name="PhotoID" Type="bigint" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmpID" Type="varchar" MaxLength="50" />
+    <Property Name="EmpName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="BirthDate" Type="date" />
+    <Property Name="ReffEmpID" Type="varchar" MaxLength="50" />
+    <Property Name="Gender" Type="char" MaxLength="1" />
+    <Property Name="EmpType" Type="smallint" />
+    <Property Name="KTPNumber" Type="varchar" MaxLength="20" />
+    <Property Name="HPNumber" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="LastEmpID" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="smallint" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EmployeeAssignment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeID" Type="bigint" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="Department" Type="varchar" MaxLength="100" />
+    <Property Name="BusinessUnit" Type="varchar" MaxLength="100" />
+    <Property Name="Region" Type="varchar" MaxLength="100" />
+    <Property Name="Grade" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmpStatus" Type="smallint" />
+    <Property Name="LastEmpID" Type="varchar" MaxLength="50" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EmployeeStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="char" MaxLength="10" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="char" MaxLength="1" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FamilyRelationship">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" Nullable="false" />
+    <Property Name="Code" Type="char" MaxLength="3" />
+    <Property Name="Name" Type="varchar" MaxLength="10" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FileArchieve">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SourceTable" Type="varchar" MaxLength="50" />
+    <Property Name="ActualPath" Type="varchar" MaxLength="300" />
+    <Property Name="ActualName" Type="varchar" MaxLength="50" />
+    <Property Name="TypeDoc" Type="varchar" MaxLength="10" />
+    <Property Name="FileDoc" Type="varbinary" MaxLength="1024" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FormExamine">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormMedicalID" Type="bigint" />
+    <Property Name="PoliID" Type="int" />
+    <Property Name="TransDate" Type="datetime" />
+    <Property Name="DoctorID" Type="int" />
+    <Property Name="Anamnesa" Type="text" />
+    <Property Name="Diagnose" Type="text" />
+    <Property Name="Therapy" Type="text" />
+    <Property Name="Remark" Type="text" />
+    <Property Name="ICDInformation" Type="varchar" MaxLength="250" />
+    <Property Name="Result" Type="nvarchar" MaxLength="250" />
+    <Property Name="RowStatus" Type="smallint" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FormExamineAttachment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormExamineID" Type="bigint" />
+    <Property Name="FileAttach" Type="bigint" />
+    <Property Name="RowStatus" Type="smallint" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FormExamineLab">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormExamineID" Type="bigint" />
+    <Property Name="LabType" Type="nvarchar" MaxLength="250" />
+    <Property Name="LabItemID" Type="int" />
+    <Property Name="Result" Type="varchar" MaxLength="50" />
+    <Property Name="ResultIndicator" Type="char" MaxLength="1" />
+    <Property Name="RowStatus" Type="smallint" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FormExamineMedicine">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormExamineID" Type="bigint" />
+    <Property Name="TypeID" Type="nvarchar" MaxLength="250" />
+    <Property Name="ProductID" Type="int" />
+    <Property Name="Qty" Type="float" />
+    <Property Name="ConcoctionMedicine" Type="text" />
+    <Property Name="RemarkUse" Type="varchar" MaxLength="50" />
+    <Property Name="RowStatus" Type="smallint" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FormExamineService">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormExamineID" Type="bigint" />
+    <Property Name="ServiceID" Type="int" />
+    <Property Name="RowStatus" Type="smallint" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FormMedical">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QueuePoliID" Type="bigint" />
+    <Property Name="ClinicID" Type="bigint" />
+    <Property Name="PatientID" Type="bigint" />
+    <Property Name="Necessity" Type="nvarchar" MaxLength="250" />
+    <Property Name="PaymentType" Type="nvarchar" MaxLength="250" />
+    <Property Name="Number" Type="varchar" MaxLength="50" />
+    <Property Name="ClaimNumber" Type="varchar" MaxLength="50" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="TotalPrice" Type="money" />
+    <Property Name="DiscountPercent" Type="float" />
+    <Property Name="DiscountAmount" Type="money" />
+    <Property Name="BenefitPaid" Type="money" />
+    <Property Name="BenefitPlan" Type="nchar" MaxLength="10" />
+    <Property Name="Remark" Type="varchar" MaxLength="255" />
+    <Property Name="RowStatus" Type="smallint" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FormPreExamine">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormMedicalID" Type="bigint" Nullable="false" />
+    <Property Name="TransDate" Type="datetime" Nullable="false" />
+    <Property Name="DoctorID" Type="int" />
+    <Property Name="Temperature" Type="float" />
+    <Property Name="Weight" Type="float" />
+    <Property Name="Height" Type="float" />
+    <Property Name="Respiratory" Type="float" />
+    <Property Name="Pulse" Type="int" />
+    <Property Name="Systolic" Type="int" />
+    <Property Name="Diastolic" Type="int" />
+    <Property Name="Others" Type="text" />
+    <Property Name="RightEye" Type="varchar" MaxLength="50" />
+    <Property Name="LeftEye" Type="varchar" MaxLength="50" />
+    <Property Name="ColorBlind" Type="nvarchar" MaxLength="250" />
+    <Property Name="MenstrualDate" Type="datetime" />
+    <Property Name="KBDate" Type="datetime" />
+    <Property Name="DailyGlasses" Type="nvarchar" MaxLength="250" />
+    <Property Name="ExamineGlasses" Type="nvarchar" MaxLength="250" />
+    <Property Name="RowStatus" Type="smallint" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="GeneralMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LabItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="LabCategoryID" Type="int" />
+    <Property Name="Normal" Type="varchar" MaxLength="50" />
+    <Property Name="Price" Type="money" />
+    <Property Name="RowStatus" Type="smallint" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LabItemCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LabType" Type="nvarchar" MaxLength="250" />
+    <Property Name="PoliID" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="RowStatus" Type="smallint" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Start" Type="datetime" Nullable="false" />
+    <Property Name="Module" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Account" Type="bigint" Nullable="false" />
+    <Property Name="Command" Type="text" />
+    <Property Name="OldValue" Type="nvarchar(max)" />
+    <Property Name="NewValue" Type="nvarchar(max)" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MCUPackage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Gender" Type="char" MaxLength="2" />
+    <Property Name="AgeStart" Type="int" />
+    <Property Name="AgeEnd" Type="int" />
+    <Property Name="GradeID" Type="int" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="NodifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Medicine">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="RowStatus" Type="smallint" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="LastUpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="DateModified" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="ParentMenuId" Type="bigint" />
+    <Property Name="PageLink" Type="nvarchar(max)" />
+    <Property Name="SortIndex" Type="int" Nullable="false" />
+    <Property Name="HasChild" Type="bit" />
+    <Property Name="IsMenu" Type="bit" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Controller" Type="varchar" MaxLength="50" />
+    <Property Name="Action" Type="varchar" MaxLength="50" />
+    <Property Name="Level" Type="int" />
+    <Property Name="Icon" Type="nvarchar" MaxLength="50" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Organization">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrgCode" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="OrgName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="KlinikID" Type="bigint" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OrganizationPrivilege">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrgID" Type="bigint" Nullable="false" />
+    <Property Name="PrivilegeID" Type="bigint" Nullable="false" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OrganizationRole">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrgID" Type="bigint" Nullable="false" />
+    <Property Name="RoleName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PasswordHistory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationID" Type="bigint" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeID" Type="bigint" />
+    <Property Name="FamilyRelationshipID" Type="smallint" />
+    <Property Name="MRNumber" Type="varchar" MaxLength="50" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Gender" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="MaritalStatus" Type="char" MaxLength="1" />
+    <Property Name="BirthDate" Type="datetime" Nullable="false" />
+    <Property Name="KTPNumber" Type="varchar" MaxLength="20" />
+    <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="Type" Type="smallint" />
+    <Property Name="BPJSNumber" Type="varchar" MaxLength="50" />
+    <Property Name="BloodType" Type="char" MaxLength="2" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="PatientKey" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="PatientClinic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PatientID" Type="bigint" Nullable="false" />
+    <Property Name="ClinicID" Type="bigint" Nullable="false" />
+    <Property Name="TempAddress" Type="varchar" MaxLength="100" />
+    <Property Name="TempCityID" Type="int" />
+    <Property Name="RefferencePerson" Type="varchar" MaxLength="50" />
+    <Property Name="RefferenceNumber" Type="varchar" MaxLength="20" />
+    <Property Name="RefferenceRelation" Type="int" />
+    <Property Name="PhotoID" Type="bigint" />
+    <Property Name="OldMRNumber" Type="varchar" MaxLength="50" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Poli">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Type" Type="smallint" Nullable="false" />
+    <Property Name="Rowstatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PoliClinic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClinicID" Type="bigint" Nullable="false" />
+    <Property Name="PoliID" Type="int" Nullable="false" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Createddate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PoliFlowTemplate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PoliTypeID" Type="smallint" Nullable="false" />
+    <Property Name="PoliTypeIDTo" Type="smallint" Nullable="false" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PoliSchedule">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClinicID" Type="bigint" Nullable="false" />
+    <Property Name="DoctorID" Type="int" Nullable="false" />
+    <Property Name="PoliID" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="ReffID" Type="bigint" />
+    <Property Name="Remark" Type="varchar" MaxLength="150" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PoliScheduleMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClinicID" Type="bigint" Nullable="false" />
+    <Property Name="DoctorID" Type="int" Nullable="false" />
+    <Property Name="PoliID" Type="int" Nullable="false" />
+    <Property Name="Day" Type="int" Nullable="false" />
+    <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="EndTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Privilege">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Privilege_Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Privilege_Desc" Type="nvarchar" MaxLength="500" />
+    <Property Name="MenuID" Type="bigint" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="10" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="ProductCategoryID" Type="int" Nullable="false" />
+    <Property Name="ProductUnitID" Type="int" Nullable="false" />
+    <Property Name="RetailPrice" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="RowStatus" Type="smallint" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="LastUpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="DateModified" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ProductCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="RowStatus" Type="smallint" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="LastUpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="DateModified" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ProductMedicine">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="MedicineID" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="float" />
+    <Property Name="RowStatus" Type="smallint" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="LastUpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="DateModified" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ProductUnit">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="10" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="RowStatus" Type="smallint" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="LastUpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="DateModified" Type="datetime" />
+  </EntityType>
+  <EntityType Name="QueuePoli">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClinicID" Type="bigint" Nullable="false" />
+    <Property Name="PatientID" Type="bigint" Nullable="false" />
+    <Property Name="DoctorID" Type="int" />
+    <Property Name="TransactionDate" Type="datetime" Nullable="false" />
+    <Property Name="Type" Type="smallint" Nullable="false" />
+    <Property Name="AppointmentID" Type="bigint" />
+    <Property Name="SortNumber" Type="int" Nullable="false" />
+    <Property Name="PoliFrom" Type="int" Nullable="false" />
+    <Property Name="PoliTo" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="varchar" MaxLength="100" />
+    <Property Name="ReffID" Type="bigint" />
+    <Property Name="Status" Type="int" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RolePrivilege">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleID" Type="bigint" Nullable="false" />
+    <Property Name="PrivilegeID" Type="bigint" Nullable="false" />
+    <Property Name="MenuID" Type="bigint" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationID" Type="bigint" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="EmployeeID" Type="bigint" />
+    <Property Name="ExpiredDate" Type="datetime" />
+    <Property Name="ResetPasswordCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="RowStatus" Type="smallint" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="bigint" Nullable="false" />
+    <Property Name="RoleID" Type="bigint" Nullable="false" />
+    <Property Name="RowStatus" Type="smallint" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_Appointment_Clinic">
+    <End Role="Clinic" Type="Self.Clinic" Multiplicity="1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinic">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="ClinicID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appointment_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appointment_MCUPackage">
+    <End Role="MCUPackage" Type="Self.MCUPackage" Multiplicity="0..1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MCUPackage">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="MCUPackageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doctor_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Doctor">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoctorClinic_Clinic">
+    <End Role="Clinic" Type="Self.Clinic" Multiplicity="1" />
+    <End Role="DoctorClinic" Type="Self.DoctorClinic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinic">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DoctorClinic">
+        <PropertyRef Name="ClinicID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoctorClinic_Doctor">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="DoctorClinic" Type="Self.DoctorClinic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DoctorClinic">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoctorClinic_FileArchieve">
+    <End Role="FileArchieve" Type="Self.FileArchieve" Multiplicity="0..1" />
+    <End Role="DoctorClinic" Type="Self.DoctorClinic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FileArchieve">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DoctorClinic">
+        <PropertyRef Name="PhotoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_EmployeeStatus">
+    <End Role="EmployeeStatus" Type="Self.EmployeeStatus" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_FamilyRelationship">
+    <End Role="FamilyRelationship" Type="Self.FamilyRelationship" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FamilyRelationship">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="EmpType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_GeneralMaster">
+    <End Role="GeneralMaster" Type="Self.GeneralMaster" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GeneralMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="EmpType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeAssignment_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="EmployeeAssignment" Type="Self.EmployeeAssignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EmployeeAssignment">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeAssignment_EmployeeStatus">
+    <End Role="EmployeeStatus" Type="Self.EmployeeStatus" Multiplicity="0..1" />
+    <End Role="EmployeeAssignment" Type="Self.EmployeeAssignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EmployeeAssignment">
+        <PropertyRef Name="EmpStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormExamine_Doctor">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+    <End Role="FormExamine" Type="Self.FormExamine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormExamine">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormExamine_FormMedical">
+    <End Role="FormMedical" Type="Self.FormMedical" Multiplicity="0..1" />
+    <End Role="FormExamine" Type="Self.FormExamine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormMedical">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormExamine">
+        <PropertyRef Name="FormMedicalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormExamine_Poli">
+    <End Role="Poli" Type="Self.Poli" Multiplicity="0..1" />
+    <End Role="FormExamine" Type="Self.FormExamine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Poli">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormExamine">
+        <PropertyRef Name="PoliID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormExamineAttachment_FileArchieve">
+    <End Role="FileArchieve" Type="Self.FileArchieve" Multiplicity="0..1" />
+    <End Role="FormExamineAttachment" Type="Self.FormExamineAttachment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FileArchieve">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormExamineAttachment">
+        <PropertyRef Name="FileAttach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormExamineAttachment_FormExamine">
+    <End Role="FormExamine" Type="Self.FormExamine" Multiplicity="0..1" />
+    <End Role="FormExamineAttachment" Type="Self.FormExamineAttachment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormExamine">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormExamineAttachment">
+        <PropertyRef Name="FormExamineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormExamineLab_FormExamine">
+    <End Role="FormExamine" Type="Self.FormExamine" Multiplicity="0..1" />
+    <End Role="FormExamineLab" Type="Self.FormExamineLab" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormExamine">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormExamineLab">
+        <PropertyRef Name="FormExamineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormExamineLab_LabItem">
+    <End Role="LabItem" Type="Self.LabItem" Multiplicity="0..1" />
+    <End Role="FormExamineLab" Type="Self.FormExamineLab" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LabItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormExamineLab">
+        <PropertyRef Name="LabItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormExamineMedicine_FormExamine">
+    <End Role="FormExamine" Type="Self.FormExamine" Multiplicity="0..1" />
+    <End Role="FormExamineMedicine" Type="Self.FormExamineMedicine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormExamine">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormExamineMedicine">
+        <PropertyRef Name="FormExamineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormMedical_Clinic">
+    <End Role="Clinic" Type="Self.Clinic" Multiplicity="0..1" />
+    <End Role="FormMedical" Type="Self.FormMedical" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinic">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormMedical">
+        <PropertyRef Name="ClinicID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormMedical_Patient">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+    <End Role="FormMedical" Type="Self.FormMedical" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormMedical">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormMedical_QueuePoli">
+    <End Role="QueuePoli" Type="Self.QueuePoli" Multiplicity="0..1" />
+    <End Role="FormMedical" Type="Self.FormMedical" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QueuePoli">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormMedical">
+        <PropertyRef Name="QueuePoliID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormPreExamine_Doctor">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+    <End Role="FormPreExamine" Type="Self.FormPreExamine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormPreExamine">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormPreExamine_FormMedical">
+    <End Role="FormMedical" Type="Self.FormMedical" Multiplicity="1" />
+    <End Role="FormPreExamine" Type="Self.FormPreExamine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormMedical">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormPreExamine">
+        <PropertyRef Name="FormMedicalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LabItem_LabItemCategory">
+    <End Role="LabItemCategory" Type="Self.LabItemCategory" Multiplicity="0..1" />
+    <End Role="LabItem" Type="Self.LabItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LabItemCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LabItem">
+        <PropertyRef Name="LabCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Organization_Clinic">
+    <End Role="Clinic" Type="Self.Clinic" Multiplicity="0..1" />
+    <End Role="Organization" Type="Self.Organization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinic">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Organization">
+        <PropertyRef Name="KlinikID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrganizationPrivilege_Organization">
+    <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+    <End Role="OrganizationPrivilege" Type="Self.OrganizationPrivilege" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrganizationPrivilege">
+        <PropertyRef Name="OrgID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrganizationPrivilege_Privilege">
+    <End Role="Privilege" Type="Self.Privilege" Multiplicity="1" />
+    <End Role="OrganizationPrivilege" Type="Self.OrganizationPrivilege" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Privilege">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrganizationPrivilege">
+        <PropertyRef Name="PrivilegeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrganizationRole_Organization">
+    <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+    <End Role="OrganizationRole" Type="Self.OrganizationRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrganizationRole">
+        <PropertyRef Name="OrgID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Patient">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientClinic_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="PatientClinic" Type="Self.PatientClinic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PatientClinic">
+        <PropertyRef Name="TempCityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientClinic_Clinic">
+    <End Role="Clinic" Type="Self.Clinic" Multiplicity="1" />
+    <End Role="PatientClinic" Type="Self.PatientClinic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinic">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientClinic">
+        <PropertyRef Name="ClinicID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientClinic_FileArchieve">
+    <End Role="FileArchieve" Type="Self.FileArchieve" Multiplicity="0..1" />
+    <End Role="PatientClinic" Type="Self.PatientClinic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FileArchieve">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientClinic">
+        <PropertyRef Name="PhotoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientClinic_Patient">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="PatientClinic" Type="Self.PatientClinic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientClinic">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PoliClinic_Clinic">
+    <End Role="Clinic" Type="Self.Clinic" Multiplicity="1" />
+    <End Role="PoliClinic" Type="Self.PoliClinic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinic">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PoliClinic">
+        <PropertyRef Name="ClinicID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PoliClinic_Poli">
+    <End Role="Poli" Type="Self.Poli" Multiplicity="1" />
+    <End Role="PoliClinic" Type="Self.PoliClinic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Poli">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PoliClinic">
+        <PropertyRef Name="PoliID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PoliSchedule_Clinic">
+    <End Role="Clinic" Type="Self.Clinic" Multiplicity="1" />
+    <End Role="PoliSchedule" Type="Self.PoliSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinic">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PoliSchedule">
+        <PropertyRef Name="ClinicID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PoliSchedule_Doctor">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="PoliSchedule" Type="Self.PoliSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PoliSchedule">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PoliSchedule_Poli">
+    <End Role="Poli" Type="Self.Poli" Multiplicity="1" />
+    <End Role="PoliSchedule" Type="Self.PoliSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Poli">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PoliSchedule">
+        <PropertyRef Name="PoliID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PoliScheduleMaster_Clinic">
+    <End Role="Clinic" Type="Self.Clinic" Multiplicity="1" />
+    <End Role="PoliScheduleMaster" Type="Self.PoliScheduleMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinic">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PoliScheduleMaster">
+        <PropertyRef Name="ClinicID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PoliScheduleMaster_Doctor">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="PoliScheduleMaster" Type="Self.PoliScheduleMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PoliScheduleMaster">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PoliScheduleMaster_Poli">
+    <End Role="Poli" Type="Self.Poli" Multiplicity="1" />
+    <End Role="PoliScheduleMaster" Type="Self.PoliScheduleMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Poli">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PoliScheduleMaster">
+        <PropertyRef Name="PoliID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Privilege_Menu">
+    <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+    <End Role="Privilege" Type="Self.Privilege" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Privilege">
+        <PropertyRef Name="MenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QueuePoli_Clinic">
+    <End Role="Clinic" Type="Self.Clinic" Multiplicity="1" />
+    <End Role="QueuePoli" Type="Self.QueuePoli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinic">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QueuePoli">
+        <PropertyRef Name="ClinicID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QueuePoli_Doctor">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+    <End Role="QueuePoli" Type="Self.QueuePoli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QueuePoli">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QueuePoli_Patient">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="QueuePoli" Type="Self.QueuePoli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QueuePoli">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QueuePoli_PoliFrom">
+    <End Role="Poli" Type="Self.Poli" Multiplicity="1" />
+    <End Role="QueuePoli" Type="Self.QueuePoli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Poli">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QueuePoli">
+        <PropertyRef Name="PoliFrom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QueuePoli_PoliTo">
+    <End Role="Poli" Type="Self.Poli" Multiplicity="1" />
+    <End Role="QueuePoli" Type="Self.QueuePoli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Poli">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QueuePoli">
+        <PropertyRef Name="PoliTo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolePrivilege_OrganizationRole">
+    <End Role="OrganizationRole" Type="Self.OrganizationRole" Multiplicity="1" />
+    <End Role="RolePrivilege" Type="Self.RolePrivilege" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrganizationRole">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RolePrivilege">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolePrivilege_Privilege">
+    <End Role="Privilege" Type="Self.Privilege" Multiplicity="1" />
+    <End Role="RolePrivilege" Type="Self.RolePrivilege" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Privilege">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RolePrivilege">
+        <PropertyRef Name="PrivilegeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Organization">
+    <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="OrganizationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRole_OrganizationRole">
+    <End Role="OrganizationRole" Type="Self.OrganizationRole" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrganizationRole">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRole_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KlinikDBModelStoreContainer">
+    <EntitySet Name="AppConfig" EntityType="Self.AppConfig" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clinic" EntityType="Self.Clinic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DoctorClinic" EntityType="Self.DoctorClinic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeAssignment" EntityType="Self.EmployeeAssignment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeStatus" EntityType="Self.EmployeeStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FamilyRelationship" EntityType="Self.FamilyRelationship" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FileArchieve" EntityType="Self.FileArchieve" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormExamine" EntityType="Self.FormExamine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormExamineAttachment" EntityType="Self.FormExamineAttachment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormExamineLab" EntityType="Self.FormExamineLab" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormExamineMedicine" EntityType="Self.FormExamineMedicine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormExamineService" EntityType="Self.FormExamineService" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormMedical" EntityType="Self.FormMedical" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormPreExamine" EntityType="Self.FormPreExamine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GeneralMaster" EntityType="Self.GeneralMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LabItem" EntityType="Self.LabItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LabItemCategory" EntityType="Self.LabItemCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MCUPackage" EntityType="Self.MCUPackage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Medicine" EntityType="Self.Medicine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrganizationPrivilege" EntityType="Self.OrganizationPrivilege" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrganizationRole" EntityType="Self.OrganizationRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PasswordHistory" EntityType="Self.PasswordHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientClinic" EntityType="Self.PatientClinic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Poli" EntityType="Self.Poli" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PoliClinic" EntityType="Self.PoliClinic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PoliFlowTemplate" EntityType="Self.PoliFlowTemplate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PoliSchedule" EntityType="Self.PoliSchedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PoliScheduleMaster" EntityType="Self.PoliScheduleMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Privilege" EntityType="Self.Privilege" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductMedicine" EntityType="Self.ProductMedicine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductUnit" EntityType="Self.ProductUnit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QueuePoli" EntityType="Self.QueuePoli" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RolePrivilege" EntityType="Self.RolePrivilege" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Appointment_Clinic" Association="Self.FK_Appointment_Clinic">
+      <End Role="Clinic" EntitySet="Clinic" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appointment_Employee" Association="Self.FK_Appointment_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appointment_MCUPackage" Association="Self.FK_Appointment_MCUPackage">
+      <End Role="MCUPackage" EntitySet="MCUPackage" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doctor_Employee" Association="Self.FK_Doctor_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Doctor" EntitySet="Doctor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoctorClinic_Clinic" Association="Self.FK_DoctorClinic_Clinic">
+      <End Role="Clinic" EntitySet="Clinic" />
+      <End Role="DoctorClinic" EntitySet="DoctorClinic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoctorClinic_Doctor" Association="Self.FK_DoctorClinic_Doctor">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="DoctorClinic" EntitySet="DoctorClinic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoctorClinic_FileArchieve" Association="Self.FK_DoctorClinic_FileArchieve">
+      <End Role="FileArchieve" EntitySet="FileArchieve" />
+      <End Role="DoctorClinic" EntitySet="DoctorClinic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_EmployeeStatus" Association="Self.FK_Employee_EmployeeStatus">
+      <End Role="EmployeeStatus" EntitySet="EmployeeStatus" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_FamilyRelationship" Association="Self.FK_Employee_FamilyRelationship">
+      <End Role="FamilyRelationship" EntitySet="FamilyRelationship" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_GeneralMaster" Association="Self.FK_Employee_GeneralMaster">
+      <End Role="GeneralMaster" EntitySet="GeneralMaster" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeAssignment_Employee" Association="Self.FK_EmployeeAssignment_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="EmployeeAssignment" EntitySet="EmployeeAssignment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeAssignment_EmployeeStatus" Association="Self.FK_EmployeeAssignment_EmployeeStatus">
+      <End Role="EmployeeStatus" EntitySet="EmployeeStatus" />
+      <End Role="EmployeeAssignment" EntitySet="EmployeeAssignment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormExamine_Doctor" Association="Self.FK_FormExamine_Doctor">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="FormExamine" EntitySet="FormExamine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormExamine_FormMedical" Association="Self.FK_FormExamine_FormMedical">
+      <End Role="FormMedical" EntitySet="FormMedical" />
+      <End Role="FormExamine" EntitySet="FormExamine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormExamine_Poli" Association="Self.FK_FormExamine_Poli">
+      <End Role="Poli" EntitySet="Poli" />
+      <End Role="FormExamine" EntitySet="FormExamine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormExamineAttachment_FileArchieve" Association="Self.FK_FormExamineAttachment_FileArchieve">
+      <End Role="FileArchieve" EntitySet="FileArchieve" />
+      <End Role="FormExamineAttachment" EntitySet="FormExamineAttachment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormExamineAttachment_FormExamine" Association="Self.FK_FormExamineAttachment_FormExamine">
+      <End Role="FormExamine" EntitySet="FormExamine" />
+      <End Role="FormExamineAttachment" EntitySet="FormExamineAttachment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormExamineLab_FormExamine" Association="Self.FK_FormExamineLab_FormExamine">
+      <End Role="FormExamine" EntitySet="FormExamine" />
+      <End Role="FormExamineLab" EntitySet="FormExamineLab" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormExamineLab_LabItem" Association="Self.FK_FormExamineLab_LabItem">
+      <End Role="LabItem" EntitySet="LabItem" />
+      <End Role="FormExamineLab" EntitySet="FormExamineLab" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormExamineMedicine_FormExamine" Association="Self.FK_FormExamineMedicine_FormExamine">
+      <End Role="FormExamine" EntitySet="FormExamine" />
+      <End Role="FormExamineMedicine" EntitySet="FormExamineMedicine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormMedical_Clinic" Association="Self.FK_FormMedical_Clinic">
+      <End Role="Clinic" EntitySet="Clinic" />
+      <End Role="FormMedical" EntitySet="FormMedical" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormMedical_Patient" Association="Self.FK_FormMedical_Patient">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="FormMedical" EntitySet="FormMedical" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormMedical_QueuePoli" Association="Self.FK_FormMedical_QueuePoli">
+      <End Role="QueuePoli" EntitySet="QueuePoli" />
+      <End Role="FormMedical" EntitySet="FormMedical" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormPreExamine_Doctor" Association="Self.FK_FormPreExamine_Doctor">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="FormPreExamine" EntitySet="FormPreExamine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormPreExamine_FormMedical" Association="Self.FK_FormPreExamine_FormMedical">
+      <End Role="FormMedical" EntitySet="FormMedical" />
+      <End Role="FormPreExamine" EntitySet="FormPreExamine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LabItem_LabItemCategory" Association="Self.FK_LabItem_LabItemCategory">
+      <End Role="LabItemCategory" EntitySet="LabItemCategory" />
+      <End Role="LabItem" EntitySet="LabItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Organization_Clinic" Association="Self.FK_Organization_Clinic">
+      <End Role="Clinic" EntitySet="Clinic" />
+      <End Role="Organization" EntitySet="Organization" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrganizationPrivilege_Organization" Association="Self.FK_OrganizationPrivilege_Organization">
+      <End Role="Organization" EntitySet="Organization" />
+      <End Role="OrganizationPrivilege" EntitySet="OrganizationPrivilege" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrganizationPrivilege_Privilege" Association="Self.FK_OrganizationPrivilege_Privilege">
+      <End Role="Privilege" EntitySet="Privilege" />
+      <End Role="OrganizationPrivilege" EntitySet="OrganizationPrivilege" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrganizationRole_Organization" Association="Self.FK_OrganizationRole_Organization">
+      <End Role="Organization" EntitySet="Organization" />
+      <End Role="OrganizationRole" EntitySet="OrganizationRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Employee" Association="Self.FK_Patient_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Patient" EntitySet="Patient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientClinic_City" Association="Self.FK_PatientClinic_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="PatientClinic" EntitySet="PatientClinic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientClinic_Clinic" Association="Self.FK_PatientClinic_Clinic">
+      <End Role="Clinic" EntitySet="Clinic" />
+      <End Role="PatientClinic" EntitySet="PatientClinic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientClinic_FileArchieve" Association="Self.FK_PatientClinic_FileArchieve">
+      <End Role="FileArchieve" EntitySet="FileArchieve" />
+      <End Role="PatientClinic" EntitySet="PatientClinic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientClinic_Patient" Association="Self.FK_PatientClinic_Patient">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="PatientClinic" EntitySet="PatientClinic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PoliClinic_Clinic" Association="Self.FK_PoliClinic_Clinic">
+      <End Role="Clinic" EntitySet="Clinic" />
+      <End Role="PoliClinic" EntitySet="PoliClinic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PoliClinic_Poli" Association="Self.FK_PoliClinic_Poli">
+      <End Role="Poli" EntitySet="Poli" />
+      <End Role="PoliClinic" EntitySet="PoliClinic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PoliSchedule_Clinic" Association="Self.FK_PoliSchedule_Clinic">
+      <End Role="Clinic" EntitySet="Clinic" />
+      <End Role="PoliSchedule" EntitySet="PoliSchedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PoliSchedule_Doctor" Association="Self.FK_PoliSchedule_Doctor">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="PoliSchedule" EntitySet="PoliSchedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PoliSchedule_Poli" Association="Self.FK_PoliSchedule_Poli">
+      <End Role="Poli" EntitySet="Poli" />
+      <End Role="PoliSchedule" EntitySet="PoliSchedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PoliScheduleMaster_Clinic" Association="Self.FK_PoliScheduleMaster_Clinic">
+      <End Role="Clinic" EntitySet="Clinic" />
+      <End Role="PoliScheduleMaster" EntitySet="PoliScheduleMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PoliScheduleMaster_Doctor" Association="Self.FK_PoliScheduleMaster_Doctor">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="PoliScheduleMaster" EntitySet="PoliScheduleMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PoliScheduleMaster_Poli" Association="Self.FK_PoliScheduleMaster_Poli">
+      <End Role="Poli" EntitySet="Poli" />
+      <End Role="PoliScheduleMaster" EntitySet="PoliScheduleMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Privilege_Menu" Association="Self.FK_Privilege_Menu">
+      <End Role="Menu" EntitySet="Menu" />
+      <End Role="Privilege" EntitySet="Privilege" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QueuePoli_Clinic" Association="Self.FK_QueuePoli_Clinic">
+      <End Role="Clinic" EntitySet="Clinic" />
+      <End Role="QueuePoli" EntitySet="QueuePoli" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QueuePoli_Doctor" Association="Self.FK_QueuePoli_Doctor">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="QueuePoli" EntitySet="QueuePoli" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QueuePoli_Patient" Association="Self.FK_QueuePoli_Patient">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="QueuePoli" EntitySet="QueuePoli" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QueuePoli_PoliFrom" Association="Self.FK_QueuePoli_PoliFrom">
+      <End Role="Poli" EntitySet="Poli" />
+      <End Role="QueuePoli" EntitySet="QueuePoli" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QueuePoli_PoliTo" Association="Self.FK_QueuePoli_PoliTo">
+      <End Role="Poli" EntitySet="Poli" />
+      <End Role="QueuePoli" EntitySet="QueuePoli" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolePrivilege_OrganizationRole" Association="Self.FK_RolePrivilege_OrganizationRole">
+      <End Role="OrganizationRole" EntitySet="OrganizationRole" />
+      <End Role="RolePrivilege" EntitySet="RolePrivilege" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolePrivilege_Privilege" Association="Self.FK_RolePrivilege_Privilege">
+      <End Role="Privilege" EntitySet="Privilege" />
+      <End Role="RolePrivilege" EntitySet="RolePrivilege" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Employee" Association="Self.FK_User_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Organization" Association="Self.FK_User_Organization">
+      <End Role="Organization" EntitySet="Organization" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_OrganizationRole" Association="Self.FK_UserRole_OrganizationRole">
+      <End Role="OrganizationRole" EntitySet="OrganizationRole" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_User" Association="Self.FK_UserRole_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

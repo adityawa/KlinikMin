@@ -1,0 +1,152 @@
+﻿@model Klinik.Entities.MasterData.ClinicModel
+
+@{
+    ViewBag.Title = "CreateOrEditClinic";
+}
+
+<section class="panel">
+    <header class="panel-heading">
+        <div class="panel-actions">
+            <a href="#" class="fa fa-caret-down"></a>
+        </div>
+        <h5 class="panel-title">Form @ViewBag.ActionType Clinic</h5>
+    </header>
+    <div class="panel-body">
+        <form class="form-horizontal form-bordered" method="post" action="/MasterData/CreateOrEditClinic">
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.ClinicCode</label>
+                <div class="col-md-4">
+                    @Html.HiddenFor(x => x.Id)
+                    @Html.TextBoxFor(x => x.Code, new { @class = "form-control", @id = "tbCode" })
+                    @Html.ValidationMessageFor(m => m.Code, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Name</label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @id = "tbName" })
+                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.LegalNO
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.LegalNumber, new { @class = "form-control", @id = "tbLegalNo" })
+                    @Html.ValidationMessageFor(m => m.LegalNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.LegalDate</label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.LegalDate, "{0:dd/MM/yyyy}", new { @class = "form-control", @id = "tbLegalDate" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.ContactNo
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.ContactNumber, new { @class = "form-control", @id = "tbContactNo" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.City
+                </label>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(p => p.CityId, (IEnumerable<SelectListItem>)ViewBag.Cities, new { @class = "form-control", @id = "ddlcity" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.ClinicType
+                </label>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(p => p.ClinicType, (IEnumerable<SelectListItem>)ViewBag.ClinicTypes, new { @class = "form-control", @id = "ddlclinicType" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.Latitude
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.Lat, new { @class = "form-control", @id = "tbLatitude" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.Longtitude
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.Long, new { @class = "form-control", @id = "tbLongtitude" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Email</label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @id = "tbEmail" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.Address
+                </label>
+                <div class="col-md-4">
+                    @Html.TextAreaFor(x => x.Address, new { @class = "form-control", @id = "tbAddress" })
+                </div>
+            </div>
+            <br />
+            <footer class="panel-footer">
+                <button type="submit" class="btn btn-primary">@Klinik.Resources.UIMessages.Save</button>
+                <button type="reset" id="btnreset" class="btn btn-default">@Klinik.Resources.UIMessages.Back</button>
+            </footer>
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnreset').click(function (e) {
+             window.location.href = "/MasterData/ClinicList";
+        });
+
+        $('#ddlcity').select2();
+        $('#ddlclinicType').select2();
+        $('#tbLegalDate').datepicker({
+            format: "dd/mm/yyyy",
+            changeMonth: true,
+            changeYear: true
+        });
+
+        toastr.options = {
+            "closeButton": false,
+            "positionClass": "toast-top-full-width",
+            "onclick": null,
+            "showDuration": "0",
+            "hideDuration": "0",
+            "timeOut": "2000",
+            "showMethod": "fadeIn"
+        };
+
+        var _temp="@ViewBag.Response";
+        var _arrMsg = _temp.split(";");
+
+        if (_arrMsg.length > 1) {
+            if (_arrMsg[0] == "True") {
+                toastr.success(_arrMsg[1]);
+            }
+            else {
+                toastr.options.closeButton = true;
+                toastr.options.timeOut = 0;
+                toastr.error(_arrMsg[1]);
+            }
+        }
+    });
+
+    </script>
+}

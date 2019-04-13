@@ -1,0 +1,982 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_Klinik_2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ADM_Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParentMenuID" Type="int" />
+          <Property Name="PageLink" Type="nvarchar" MaxLength="250" />
+          <Property Name="SortIndex" Type="int" Nullable="false" />
+          <Property Name="HasChild" Type="bit" />
+          <Property Name="IsMenu" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADM_ModuleAuthorization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="MenuId" Type="int" Nullable="false" />
+          <Property Name="AllowAccess" Type="bit" Nullable="false" />
+          <Property Name="AllowEdit" Type="bit" Nullable="false" />
+          <Property Name="AllowAdd" Type="bit" Nullable="false" />
+          <Property Name="AllowDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADM_Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADM_UserPassword">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ADM_UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="EmpId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BookingService">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="EmpID" Type="int" />
+          <Property Name="ClinicPoliID" Type="int" />
+          <Property Name="DoctorScheduleID" Type="int" />
+          <Property Name="ServiceDate" Type="datetime" />
+          <Property Name="BookingDate" Type="datetime" />
+          <Property Name="Counter" Type="int" />
+          <Property Name="Status" Type="smallint" />
+          <Property Name="RowStatus" Type="smallint" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastUpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateModified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="150" />
+          <Property Name="Status" Type="smallint" />
+          <Property Name="RowStatus" Type="smallint" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastUpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateModified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Clinic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="10" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="LegalNumber" Type="varchar" MaxLength="50" />
+          <Property Name="LegalDate" Type="date" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Lat" Type="float" />
+          <Property Name="Long" Type="float" />
+          <Property Name="CityID" Type="int" />
+          <Property Name="ClinicType" Type="smallint" />
+          <Property Name="ReffID" Type="int" />
+          <Property Name="RowStatus" Type="smallint" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastUpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateModified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ClinicPoli">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClinicID" Type="int" />
+          <Property Name="PoliID" Type="int" />
+          <Property Name="Status" Type="smallint" />
+          <Property Name="RowStatus" Type="smallint" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastUpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateModified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="5" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="ParameterID" Type="int" />
+          <Property Name="LegalNumber" Type="varchar" MaxLength="20" />
+          <Property Name="RowStatus" Type="smallint" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastUpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateModified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DoctorAbsentSchedule">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="DoctorID" Type="int" />
+          <Property Name="ClinicPoliID" Type="int" />
+          <Property Name="AbsentDate" Type="datetime" />
+          <Property Name="Remark" Type="varchar" MaxLength="500" />
+          <Property Name="RowStatus" Type="smallint" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastUpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateModified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DoctorSchedule">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="DoctorID" Type="int" />
+          <Property Name="ClinicPoliID" Type="int" />
+          <Property Name="DaysOfWeek" Type="smallint" />
+          <Property Name="TimeStart" Type="time" Precision="7" />
+          <Property Name="TimeEnd" Type="time" Precision="7" />
+          <Property Name="RowStatus" Type="smallint" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastUpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateModified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="EmpID" Type="varchar" MaxLength="50" />
+          <Property Name="EmpName" Type="varchar" MaxLength="100" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="Gender" Type="char" MaxLength="1" />
+          <Property Name="EmpType" Type="smallint" />
+          <Property Name="EmpDept" Type="smallint" />
+          <Property Name="RowStatus" Type="smallint" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastUpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Parameter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="5" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Type" Type="int" />
+          <Property Name="RowStatus" Type="smallint" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastUpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateModified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MRNumber" Type="varchar" MaxLength="20" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="EmpID" Type="bigint" />
+          <Property Name="IdentityNumber" Type="varchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="BirthCity" Type="varchar" MaxLength="100" />
+          <Property Name="MarriageStatus" Type="smallint" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="CityID" Type="int" />
+          <Property Name="HPNumber" Type="varchar" MaxLength="15" />
+          <Property Name="Gender" Type="char" MaxLength="1" />
+          <Property Name="BloodType" Type="varchar" MaxLength="2" />
+          <Property Name="ReshusType" Type="char" MaxLength="1" />
+          <Property Name="Religion" Type="smallint" />
+          <Property Name="ContactName" Type="varchar" MaxLength="100" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="50" />
+          <Property Name="ContactType" Type="smallint" />
+          <Property Name="ContactAddress" Type="varchar" MaxLength="500" />
+          <Property Name="RowStatus" Type="smallint" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastUpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateModified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PatientToEmp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="PatientID" Type="int" />
+          <Property Name="EmpID" Type="int" />
+          <Property Name="RowStatus" Type="smallint" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateModified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Poli">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Type" Type="smallint" />
+          <Property Name="RowStatus" Type="smallint" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastUpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateModified" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_ADM_ModuleAuthorization_ADM_Menu">
+          <End Role="ADM_Menu" Type="Self.ADM_Menu" Multiplicity="1" />
+          <End Role="ADM_ModuleAuthorization" Type="Self.ADM_ModuleAuthorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADM_Menu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADM_ModuleAuthorization">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADM_ModuleAuthorization_ADM_Role">
+          <End Role="ADM_Role" Type="Self.ADM_Role" Multiplicity="1" />
+          <End Role="ADM_ModuleAuthorization" Type="Self.ADM_ModuleAuthorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADM_Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ADM_ModuleAuthorization">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADM_UserRole_ADM_Role">
+          <End Role="ADM_Role" Type="Self.ADM_Role" Multiplicity="1" />
+          <End Role="ADM_UserRole" Type="Self.ADM_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADM_Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ADM_UserRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADM_UserRole_ADM_UserRole">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="ADM_UserRole" Type="Self.ADM_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ADM_UserRole">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_Klinik_2ModelStoreContainer">
+          <EntitySet Name="ADM_Menu" EntityType="Self.ADM_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADM_ModuleAuthorization" EntityType="Self.ADM_ModuleAuthorization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADM_Role" EntityType="Self.ADM_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADM_UserPassword" EntityType="Self.ADM_UserPassword" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADM_UserRole" EntityType="Self.ADM_UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookingService" EntityType="Self.BookingService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clinic" EntityType="Self.Clinic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClinicPoli" EntityType="Self.ClinicPoli" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DoctorAbsentSchedule" EntityType="Self.DoctorAbsentSchedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DoctorSchedule" EntityType="Self.DoctorSchedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parameter" EntityType="Self.Parameter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PatientToEmp" EntityType="Self.PatientToEmp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Poli" EntityType="Self.Poli" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ADM_ModuleAuthorization_ADM_Menu" Association="Self.FK_ADM_ModuleAuthorization_ADM_Menu">
+            <End Role="ADM_Menu" EntitySet="ADM_Menu" />
+            <End Role="ADM_ModuleAuthorization" EntitySet="ADM_ModuleAuthorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADM_ModuleAuthorization_ADM_Role" Association="Self.FK_ADM_ModuleAuthorization_ADM_Role">
+            <End Role="ADM_Role" EntitySet="ADM_Role" />
+            <End Role="ADM_ModuleAuthorization" EntitySet="ADM_ModuleAuthorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADM_UserRole_ADM_Role" Association="Self.FK_ADM_UserRole_ADM_Role">
+            <End Role="ADM_Role" EntitySet="ADM_Role" />
+            <End Role="ADM_UserRole" EntitySet="ADM_UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADM_UserRole_ADM_UserRole" Association="Self.FK_ADM_UserRole_ADM_UserRole">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="ADM_UserRole" EntitySet="ADM_UserRole" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_Klinik_2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DB_Klinik_2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADM_Menu" EntityType="DB_Klinik_2Model.ADM_Menu" />
+          <EntitySet Name="ADM_ModuleAuthorization" EntityType="DB_Klinik_2Model.ADM_ModuleAuthorization" />
+          <EntitySet Name="ADM_Role" EntityType="DB_Klinik_2Model.ADM_Role" />
+          <EntitySet Name="ADM_UserPassword" EntityType="DB_Klinik_2Model.ADM_UserPassword" />
+          <EntitySet Name="ADM_UserRole" EntityType="DB_Klinik_2Model.ADM_UserRole" />
+          <EntitySet Name="BookingServices" EntityType="DB_Klinik_2Model.BookingService" />
+          <EntitySet Name="Cities" EntityType="DB_Klinik_2Model.City" />
+          <EntitySet Name="Clinics" EntityType="DB_Klinik_2Model.Clinic" />
+          <EntitySet Name="ClinicPolis" EntityType="DB_Klinik_2Model.ClinicPoli" />
+          <EntitySet Name="Doctors" EntityType="DB_Klinik_2Model.Doctor" />
+          <EntitySet Name="DoctorAbsentSchedules" EntityType="DB_Klinik_2Model.DoctorAbsentSchedule" />
+          <EntitySet Name="DoctorSchedules" EntityType="DB_Klinik_2Model.DoctorSchedule" />
+          <EntitySet Name="Employees" EntityType="DB_Klinik_2Model.Employee" />
+          <EntitySet Name="Parameters" EntityType="DB_Klinik_2Model.Parameter" />
+          <EntitySet Name="Patients" EntityType="DB_Klinik_2Model.Patient" />
+          <EntitySet Name="PatientToEmps" EntityType="DB_Klinik_2Model.PatientToEmp" />
+          <EntitySet Name="Polis" EntityType="DB_Klinik_2Model.Poli" />
+          <AssociationSet Name="FK_ADM_ModuleAuthorization_ADM_Menu" Association="DB_Klinik_2Model.FK_ADM_ModuleAuthorization_ADM_Menu">
+            <End Role="ADM_Menu" EntitySet="ADM_Menu" />
+            <End Role="ADM_ModuleAuthorization" EntitySet="ADM_ModuleAuthorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADM_ModuleAuthorization_ADM_Role" Association="DB_Klinik_2Model.FK_ADM_ModuleAuthorization_ADM_Role">
+            <End Role="ADM_Role" EntitySet="ADM_Role" />
+            <End Role="ADM_ModuleAuthorization" EntitySet="ADM_ModuleAuthorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADM_UserRole_ADM_Role" Association="DB_Klinik_2Model.FK_ADM_UserRole_ADM_Role">
+            <End Role="ADM_Role" EntitySet="ADM_Role" />
+            <End Role="ADM_UserRole" EntitySet="ADM_UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADM_UserRole_ADM_UserRole" Association="DB_Klinik_2Model.FK_ADM_UserRole_ADM_UserRole">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="ADM_UserRole" EntitySet="ADM_UserRole" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ADM_Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParentMenuID" Type="Int32" />
+          <Property Name="PageLink" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SortIndex" Type="Int32" Nullable="false" />
+          <Property Name="HasChild" Type="Boolean" />
+          <Property Name="IsMenu" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ADM_ModuleAuthorization" Relationship="DB_Klinik_2Model.FK_ADM_ModuleAuthorization_ADM_Menu" FromRole="ADM_Menu" ToRole="ADM_ModuleAuthorization" />
+        </EntityType>
+        <EntityType Name="ADM_ModuleAuthorization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <Property Name="AllowAccess" Type="Boolean" Nullable="false" />
+          <Property Name="AllowEdit" Type="Boolean" Nullable="false" />
+          <Property Name="AllowAdd" Type="Boolean" Nullable="false" />
+          <Property Name="AllowDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ADM_Menu" Relationship="DB_Klinik_2Model.FK_ADM_ModuleAuthorization_ADM_Menu" FromRole="ADM_ModuleAuthorization" ToRole="ADM_Menu" />
+          <NavigationProperty Name="ADM_Role" Relationship="DB_Klinik_2Model.FK_ADM_ModuleAuthorization_ADM_Role" FromRole="ADM_ModuleAuthorization" ToRole="ADM_Role" />
+        </EntityType>
+        <EntityType Name="ADM_Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ADM_ModuleAuthorization" Relationship="DB_Klinik_2Model.FK_ADM_ModuleAuthorization_ADM_Role" FromRole="ADM_Role" ToRole="ADM_ModuleAuthorization" />
+          <NavigationProperty Name="ADM_UserRole" Relationship="DB_Klinik_2Model.FK_ADM_UserRole_ADM_Role" FromRole="ADM_Role" ToRole="ADM_UserRole" />
+        </EntityType>
+        <EntityType Name="ADM_UserPassword">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ADM_UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="EmpId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ADM_Role" Relationship="DB_Klinik_2Model.FK_ADM_UserRole_ADM_Role" FromRole="ADM_UserRole" ToRole="ADM_Role" />
+          <NavigationProperty Name="Employee" Relationship="DB_Klinik_2Model.FK_ADM_UserRole_ADM_UserRole" FromRole="ADM_UserRole" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="BookingService">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="EmpID" Type="Int32" />
+          <Property Name="ClinicPoliID" Type="Int32" />
+          <Property Name="DoctorScheduleID" Type="Int32" />
+          <Property Name="ServiceDate" Type="DateTime" Precision="3" />
+          <Property Name="BookingDate" Type="DateTime" Precision="3" />
+          <Property Name="Counter" Type="Int32" />
+          <Property Name="Status" Type="Int16" />
+          <Property Name="RowStatus" Type="Int16" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int16" />
+          <Property Name="RowStatus" Type="Int16" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Clinic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LegalNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LegalDate" Type="DateTime" Precision="0" />
+          <Property Name="ContactNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lat" Type="Double" />
+          <Property Name="Long" Type="Double" />
+          <Property Name="CityID" Type="Int32" />
+          <Property Name="ClinicType" Type="Int16" />
+          <Property Name="ReffID" Type="Int32" />
+          <Property Name="RowStatus" Type="Int16" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ClinicPoli">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClinicID" Type="Int32" />
+          <Property Name="PoliID" Type="Int32" />
+          <Property Name="Status" Type="Int16" />
+          <Property Name="RowStatus" Type="Int16" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ParameterID" Type="Int32" />
+          <Property Name="LegalNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RowStatus" Type="Int16" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="DoctorAbsentSchedule">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="DoctorID" Type="Int32" />
+          <Property Name="ClinicPoliID" Type="Int32" />
+          <Property Name="AbsentDate" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RowStatus" Type="Int16" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="DoctorSchedule">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="DoctorID" Type="Int32" />
+          <Property Name="ClinicPoliID" Type="Int32" />
+          <Property Name="DaysOfWeek" Type="Int16" />
+          <Property Name="TimeStart" Type="Time" Precision="7" />
+          <Property Name="TimeEnd" Type="Time" Precision="7" />
+          <Property Name="RowStatus" Type="Int16" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="EmpID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="EmpType" Type="Int16" />
+          <Property Name="EmpDept" Type="Int16" />
+          <Property Name="RowStatus" Type="Int16" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ADM_UserRole" Relationship="DB_Klinik_2Model.FK_ADM_UserRole_ADM_UserRole" FromRole="Employee" ToRole="ADM_UserRole" />
+        </EntityType>
+        <EntityType Name="Parameter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="RowStatus" Type="Int16" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MRNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmpID" Type="Int64" />
+          <Property Name="IdentityNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="BirthCity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MarriageStatus" Type="Int16" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CityID" Type="Int32" />
+          <Property Name="HPNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="BloodType" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="ReshusType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Religion" Type="Int16" />
+          <Property Name="ContactName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactType" Type="Int16" />
+          <Property Name="ContactAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RowStatus" Type="Int16" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PatientToEmp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="PatientID" Type="Int32" />
+          <Property Name="EmpID" Type="Int32" />
+          <Property Name="RowStatus" Type="Int16" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Poli">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="Int16" />
+          <Property Name="RowStatus" Type="Int16" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_ADM_ModuleAuthorization_ADM_Menu">
+          <End Type="DB_Klinik_2Model.ADM_Menu" Role="ADM_Menu" Multiplicity="1" />
+          <End Type="DB_Klinik_2Model.ADM_ModuleAuthorization" Role="ADM_ModuleAuthorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADM_Menu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADM_ModuleAuthorization">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADM_ModuleAuthorization_ADM_Role">
+          <End Type="DB_Klinik_2Model.ADM_Role" Role="ADM_Role" Multiplicity="1" />
+          <End Type="DB_Klinik_2Model.ADM_ModuleAuthorization" Role="ADM_ModuleAuthorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADM_Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ADM_ModuleAuthorization">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADM_UserRole_ADM_Role">
+          <End Type="DB_Klinik_2Model.ADM_Role" Role="ADM_Role" Multiplicity="1" />
+          <End Type="DB_Klinik_2Model.ADM_UserRole" Role="ADM_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADM_Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ADM_UserRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADM_UserRole_ADM_UserRole">
+          <End Type="DB_Klinik_2Model.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="DB_Klinik_2Model.ADM_UserRole" Role="ADM_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ADM_UserRole">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_Klinik_2ModelStoreContainer" CdmEntityContainer="DB_Klinik_2Entities">
+          <EntitySetMapping Name="ADM_Menu">
+            <EntityTypeMapping TypeName="DB_Klinik_2Model.ADM_Menu">
+              <MappingFragment StoreEntitySet="ADM_Menu">
+                <ScalarProperty Name="IsMenu" ColumnName="IsMenu" />
+                <ScalarProperty Name="HasChild" ColumnName="HasChild" />
+                <ScalarProperty Name="SortIndex" ColumnName="SortIndex" />
+                <ScalarProperty Name="PageLink" ColumnName="PageLink" />
+                <ScalarProperty Name="ParentMenuID" ColumnName="ParentMenuID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADM_ModuleAuthorization">
+            <EntityTypeMapping TypeName="DB_Klinik_2Model.ADM_ModuleAuthorization">
+              <MappingFragment StoreEntitySet="ADM_ModuleAuthorization">
+                <ScalarProperty Name="AllowDelete" ColumnName="AllowDelete" />
+                <ScalarProperty Name="AllowAdd" ColumnName="AllowAdd" />
+                <ScalarProperty Name="AllowEdit" ColumnName="AllowEdit" />
+                <ScalarProperty Name="AllowAccess" ColumnName="AllowAccess" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADM_Role">
+            <EntityTypeMapping TypeName="DB_Klinik_2Model.ADM_Role">
+              <MappingFragment StoreEntitySet="ADM_Role">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADM_UserPassword">
+            <EntityTypeMapping TypeName="DB_Klinik_2Model.ADM_UserPassword">
+              <MappingFragment StoreEntitySet="ADM_UserPassword">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADM_UserRole">
+            <EntityTypeMapping TypeName="DB_Klinik_2Model.ADM_UserRole">
+              <MappingFragment StoreEntitySet="ADM_UserRole">
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookingServices">
+            <EntityTypeMapping TypeName="DB_Klinik_2Model.BookingService">
+              <MappingFragment StoreEntitySet="BookingService">
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="RowStatus" ColumnName="RowStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Counter" ColumnName="Counter" />
+                <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+                <ScalarProperty Name="ServiceDate" ColumnName="ServiceDate" />
+                <ScalarProperty Name="DoctorScheduleID" ColumnName="DoctorScheduleID" />
+                <ScalarProperty Name="ClinicPoliID" ColumnName="ClinicPoliID" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="DB_Klinik_2Model.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="RowStatus" ColumnName="RowStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clinics">
+            <EntityTypeMapping TypeName="DB_Klinik_2Model.Clinic">
+              <MappingFragment StoreEntitySet="Clinic">
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="RowStatus" ColumnName="RowStatus" />
+                <ScalarProperty Name="ReffID" ColumnName="ReffID" />
+                <ScalarProperty Name="ClinicType" ColumnName="ClinicType" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="LegalDate" ColumnName="LegalDate" />
+                <ScalarProperty Name="LegalNumber" ColumnName="LegalNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClinicPolis">
+            <EntityTypeMapping TypeName="DB_Klinik_2Model.ClinicPoli">
+              <MappingFragment StoreEntitySet="ClinicPoli">
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="RowStatus" ColumnName="RowStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PoliID" ColumnName="PoliID" />
+                <ScalarProperty Name="ClinicID" ColumnName="ClinicID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="DB_Klinik_2Model.Doctor">
+              <MappingFragment StoreEntitySet="Doctor">
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="RowStatus" ColumnName="RowStatus" />
+                <ScalarProperty Name="LegalNumber" ColumnName="LegalNumber" />
+                <ScalarProperty Name="ParameterID" ColumnName="ParameterID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DoctorAbsentSchedules">
+            <EntityTypeMapping TypeName="DB_Klinik_2Model.DoctorAbsentSchedule">
+              <MappingFragment StoreEntitySet="DoctorAbsentSchedule">
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="RowStatus" ColumnName="RowStatus" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="AbsentDate" ColumnName="AbsentDate" />
+                <ScalarProperty Name="ClinicPoliID" ColumnName="ClinicPoliID" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DoctorSchedules">
+            <EntityTypeMapping TypeName="DB_Klinik_2Model.DoctorSchedule">
+              <MappingFragment StoreEntitySet="DoctorSchedule">
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="RowStatus" ColumnName="RowStatus" />
+                <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+                <ScalarProperty Name="DaysOfWeek" ColumnName="DaysOfWeek" />
+                <ScalarProperty Name="ClinicPoliID" ColumnName="ClinicPoliID" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="DB_Klinik_2Model.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="RowStatus" ColumnName="RowStatus" />
+                <ScalarProperty Name="EmpDept" ColumnName="EmpDept" />
+                <ScalarProperty Name="EmpType" ColumnName="EmpType" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parameters">
+            <EntityTypeMapping TypeName="DB_Klinik_2Model.Parameter">
+              <MappingFragment StoreEntitySet="Parameter">
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="RowStatus" ColumnName="RowStatus" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="DB_Klinik_2Model.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="RowStatus" ColumnName="RowStatus" />
+                <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
+                <ScalarProperty Name="ContactType" ColumnName="ContactType" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+                <ScalarProperty Name="ReshusType" ColumnName="ReshusType" />
+                <ScalarProperty Name="BloodType" ColumnName="BloodType" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="HPNumber" ColumnName="HPNumber" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="MarriageStatus" ColumnName="MarriageStatus" />
+                <ScalarProperty Name="BirthCity" ColumnName="BirthCity" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MRNumber" ColumnName="MRNumber" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatientToEmps">
+            <EntityTypeMapping TypeName="DB_Klinik_2Model.PatientToEmp">
+              <MappingFragment StoreEntitySet="PatientToEmp">
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="RowStatus" ColumnName="RowStatus" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Polis">
+            <EntityTypeMapping TypeName="DB_Klinik_2Model.Poli">
+              <MappingFragment StoreEntitySet="Poli">
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="RowStatus" ColumnName="RowStatus" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

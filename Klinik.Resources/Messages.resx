@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EmailBodyResetPassword" xml:space="preserve">
+    <value>Hi,
+
+We got request for reset your account password. Please click on the below link to reset your password 
+&lt;a href= {0} &gt;Reset Password link&lt;/a&gt;
+
+Regards,
+
+Administrator</value>
+  </data>
+  <data name="EmployeeWithEmailNotExist" xml:space="preserve">
+    <value>Employee with an email {0} does not exist</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="ResetPasswordLinkSent" xml:space="preserve">
+    <value>Reset password link has been sent to your email address.</value>
+  </data>
+  <data name="UserPasswordUpdated" xml:space="preserve">
+    <value>User password has been successfully updated</value>
+  </data>
+  <data name="UserPasswordUpdateFailed" xml:space="preserve">
+    <value>Failed update user password</value>
+  </data>
+  <data name="CannotChangePasswordForInactiveUser" xml:space="preserve">
+    <value>Password cannot be changed for non-active user</value>
+  </data>
+  <data name="DataUpdated" xml:space="preserve">
+    <value>Data Successfully Updated</value>
+  </data>
+  <data name="InvalidOrganizationCode" xml:space="preserve">
+    <value>Invalid Organization Code</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>Invalid Password</value>
+  </data>
+  <data name="InvalidResetPasswordCode" xml:space="preserve">
+    <value>Invalid Reset Password Code </value>
+  </data>
+  <data name="InvalidUsernamePassword" xml:space="preserve">
+    <value>Invalid User Name or Password</value>
+  </data>
+  <data name="PasswordHasBeenUsedBefore" xml:space="preserve">
+    <value>Password already used in the past, please use another</value>
+  </data>
+  <data name="RequiredFieldsMissing" xml:space="preserve">
+    <value>Following Fields must be filled : {0}</value>
+  </data>
+  <data name="UnauthorizedAccess" xml:space="preserve">
+    <value>Unauthorized Access!</value>
+  </data>
+  <data name="UpdateFailedUsernamePasswordNotMatch" xml:space="preserve">
+    <value>Password cannot be changed because user name and password not match</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>User Not Found</value>
+  </data>
+  <data name="ValidationErrorFields" xml:space="preserve">
+    <value>Validation Error for following fields : {0}</value>
+  </data>
+  <data name="DataSaved" xml:space="preserve">
+    <value>Data Successfully Saved</value>
+  </data>
+  <data name="OneEmpOneUserID" xml:space="preserve">
+    <value>One employee cannot have more than one user Id</value>
+  </data>
+  <data name="UsernameAlreadyExist" xml:space="preserve">
+    <value>User name already exist</value>
+  </data>
+  <data name="AddObjectFailed" xml:space="preserve">
+    <value>Add {0} Failed</value>
+  </data>
+  <data name="ObjectHasBeenAdded" xml:space="preserve">
+    <value>{0} {1} with ID {2} has been successfully added</value>
+  </data>
+  <data name="ObjectHasBeenRemoved" xml:space="preserve">
+    <value>{0} {1} with ID {2} has been successfully removed</value>
+  </data>
+  <data name="ObjectHasBeenUpdated" xml:space="preserve">
+    <value>{0} {1} with ID {2} has been successfully updated</value>
+  </data>
+  <data name="RemoveObjectFailed" xml:space="preserve">
+    <value>Remove {0} Failed</value>
+  </data>
+  <data name="UpdateObjectFailed" xml:space="preserve">
+    <value>Update {0} Failed</value>
+  </data>
+  <data name="GeneralError" xml:space="preserve">
+    <value>Oops.. Something went wrong. Please check the Error Log or Contact customer support</value>
+  </data>
+  <data name="Patient" xml:space="preserve">
+    <value>Patient</value>
+  </data>
+  <data name="UnrecognizedEmployee" xml:space="preserve">
+    <value>Employee {0} is not recognized</value>
+  </data>
+  <data name="ValidationUnrecognizedFields" xml:space="preserve">
+    <value>Following fields are not recognized : {0}</value>
+  </data>
+  <data name="ObjectHasBeenUpdated2" xml:space="preserve">
+    <value>{0} with ID {1} has been successfully updated</value>
+  </data>
+  <data name="ObjectHasBeenAdded2" xml:space="preserve">
+    <value>{0} with ID {1} has been successfully added</value>
+  </data>
+  <data name="ObjectHasBeenRemoved2" xml:space="preserve">
+    <value>{0} with ID {1} has been successfully removed</value>
+  </data>
+  <data name="Doctor" xml:space="preserve">
+    <value>Doctor</value>
+  </data>
+  <data name="Paramedic" xml:space="preserve">
+    <value>Paramedic</value>
+  </data>
+  <data name="InvalidModelState" xml:space="preserve">
+    <value>Invalid Model State. Please check your input.</value>
+  </data>
+  <data name="UserDoesNotHaveClinic" xml:space="preserve">
+    <value>Organization of this user does not have clinic, please assign clinic to this user</value>
+  </data>
+  <data name="STRValidToInvalid" xml:space="preserve">
+    <value>STRValidTo should be greater than STRValidFrom</value>
+  </data>
+  <data name="InvalidImage" xml:space="preserve">
+    <value>Invalid Photo File</value>
+  </data>
+  <data name="ObjectPatientAdded" xml:space="preserve">
+    <value>Patient with name {0} has been Added for clinic Id {1}</value>
+  </data>
+  <data name="ObjectPatientUpdated" xml:space="preserve">
+    <value>Patient with name  {0} has been Updated for clinic Id {1}</value>
+  </data>
+  <data name="SessionExpired" xml:space="preserve">
+    <value>Session Expired</value>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="MenstrualDataProhibited" xml:space="preserve">
+    <value>Menstrual and KB Date is only for woman. Don't fill if patient is a men</value>
+  </data>
+  <data name="ObjectPreExamineDataAdded" xml:space="preserve">
+    <value>Pre Examine Data for Patient {0} has been added with Id {1}</value>
+  </data>
+  <data name="PatientNotRegistered" xml:space="preserve">
+    <value>Patient is not registered in Poli yet</value>
+  </data>
+</root>

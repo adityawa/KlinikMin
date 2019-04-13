@@ -1,0 +1,215 @@
+﻿@model Klinik.Entities.Loket.LoketModel
+
+@{
+    ViewBag.Title = "EditRegistration";
+}
+
+@section Styles {
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <style>
+        .form-horizontal .control-label {
+            text-align: left;
+        }
+    </style>
+}
+
+<div class="col-md-12">
+    <form class="form-horizontal form-bordered" method="post" action="/Loket/Edit">
+        <section class="panel">
+            <header class="panel-heading">
+                <div class="panel-actions">
+                    <a href="#" class="fa fa-caret-down"></a>
+                </div>
+                <div>
+                    <h5 class="panel-title">
+                        @Klinik.Resources.UIMessages.Edit
+                    </h5>
+                </div>
+            </header>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-md-1 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Patient</label>
+                    @Html.HiddenFor(x => x.Id)
+                    @Html.HiddenFor(x => x.Status)
+                    @Html.HiddenFor(x => x.CurrentPoliID)
+                    @Html.HiddenFor(x => x.PoliFromID)
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.PatientName, new { @class = "form-control", @id = "tbPatientName", @readonly = "readonly" })
+                    </div>
+                    <label class="col-md-1 control-label" for="inputDefault">@Klinik.Resources.UIMessages.BPJSNo</label>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.PatientBPJSNumber, new { @class = "form-control", @id = "tbBPJSNumber", @readonly = "readonly" })
+                    </div>
+                    <label class="col-md-1 control-label " for="inputDefault" style="text-align:left">
+                        @Klinik.Resources.UIMessages.PoliTo
+                    </label>
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(p => p.PoliToID, (IEnumerable<SelectListItem>)ViewBag.PoliList, new { @class = "form-control", @id = "ddlpolito" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-1 control-label" for="inputDefault">@Klinik.Resources.UIMessages.MRNumber</label>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.MRNumber, new { @class = "form-control", @id = "tbMRNumber", @readonly = "readonly" })
+                    </div>
+                    <label class="col-md-1 control-label" for="inputDefault">@Klinik.Resources.UIMessages.KTPNumber</label>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.PatientKTPNumber, new { @class = "form-control", @id = "tbKTPNumber", @readonly = "readonly" })
+                    </div>
+                    <label class="col-md-1 control-label" for="inputDefault">
+                        @Klinik.Resources.UIMessages.Doctor
+                    </label>
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(p => p.DoctorID, (IEnumerable<SelectListItem>)ViewBag.DoctorList, new { @class = "form-control", @id = "ddldoctor" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-1 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Birthdate</label>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.PatientBirthDateStr, new { @class = "form-control", @id = "tbBirthdate", @readonly = "readonly" })
+                    </div>
+                    <label class="col-md-1 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Gender</label>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.PatientGender, new { @class = "form-control", @id = "tbPatientGender", @readonly = "readonly" })
+                    </div>
+                    <label class="col-md-1 control-label" for="inputDefault">
+                        @Klinik.Resources.UIMessages.Necessity
+                    </label>
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(p => p.NecessityType, (IEnumerable<SelectListItem>)ViewBag.NecessityList, new { @class = "form-control", @id = "ddlnecessity" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-1 control-label" for="inputDefault">@Klinik.Resources.UIMessages.PatientType</label>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.PatientType, new { @class = "form-control", @id = "tbPatientType", @readonly = "readonly" })
+                    </div>
+                    <label class="col-md-1 control-label" for="inputDefault">@Klinik.Resources.UIMessages.BloodType</label>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.PatientBloodType, new { @class = "form-control", @id = "tbBloodType", @readonly = "readonly" })
+                    </div>
+                    <label class="col-md-1 control-label" for="inputDefault">
+                        @Klinik.Resources.UIMessages.RegisterType
+                    </label>
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(p => p.Type, (IEnumerable<SelectListItem>)ViewBag.RegistrationTypeList, new { @class = "form-control", @id = "ddltype" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-1 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Address</label>
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(x => x.PatientAddress, new { @class = "form-control", @id = "tbAddress", @readonly = "readonly" })
+                    </div>
+                    <label class="col-md-1 control-label" for="inputDefault">
+                        @Klinik.Resources.UIMessages.PaymentType
+                    </label>
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(p => p.PaymentType, (IEnumerable<SelectListItem>)ViewBag.PaymentTypeList, new { @class = "form-control", @id = "ddlpaymenttype" })
+                    </div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.PaymentNumber, new { @class = "form-control", @id = "tbPaymentNumber", @style = "display: none;" })
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button type="submit" class="btn btn-primary">@Klinik.Resources.UIMessages.Update</button>
+                @if (Model.IsFromDashboard)
+                {
+                    <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Home")'">@Klinik.Resources.UIMessages.Back</button>
+                }
+                else
+                {
+                    <button type="reset" class="btn btn-danger" onclick="GoBack(@Model.CurrentPoliID)">@Klinik.Resources.UIMessages.Back</button>
+                }
+            </div>
+        </section>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#ddlpaymenttype").change(function () {
+                var paymentId = $("#ddlpaymenttype").val();
+                var tb = document.getElementById("tbPaymentNumber");
+
+                if (paymentId == 1 || paymentId == 4) {
+                    tb.style.display = "none";
+                } else {
+                    tb.style.display = "block";
+                }
+            });
+
+            $("#ddlpolito").change(function () {
+                $.get("/Loket/GetDoctorList", { PoliId: $("#ddlpolito").val() }, function (data) {
+                $("#ddldoctor").empty();
+                $.each(data, function (index, row) {
+                    $("#ddldoctor").append('<option value="' + row.ID + '">' + row.Name + '</option>');
+                });
+            });
+            });
+
+            toastr.options = {
+                "closeButton": false,
+                "positionClass": "toast-top-full-width",
+                "onclick": null,
+                "showDuration": "0",
+                "hideDuration": "0",
+                "timeOut": "2000",
+                "showMethod": "fadeIn"
+            };
+
+            var _temp="@ViewBag.Response";
+            var _arrMsg = _temp.split(";");
+
+            if (_arrMsg.length > 1) {
+                if (_arrMsg[0] == "True") {
+                    toastr.success(_arrMsg[1]);
+                }
+                else {
+                    toastr.options.closeButton = true;
+                    toastr.options.timeOut = 0;
+                    toastr.error(_arrMsg[1]);
+                }
+            }
+
+            var _number="@Model.PaymentNumber";
+            if (_number.length > 1) {
+                document.getElementById("tbPaymentNumber").style.display = "block";
+            }
+        });
+
+        var GoBack = function (poliID) {
+            if (poliID == 1) {
+                window.location.href = "/Loket/Index";
+            } else if (poliID == 2) {
+                window.location.href = "/Loket/PoliUmum";
+            } else if (poliID == 3) {
+                window.location.href = "/Loket/PoliGigi";
+            } else if (poliID == 4) {
+                window.location.href = "/Loket/PoliInternis";
+            } else if (poliID == 5) {
+                window.location.href = "/Loket/PoliKulit";
+            } else if (poliID == 6) {
+                window.location.href = "/Loket/PoliMata";
+            } else if (poliID == 7) {
+                window.location.href = "/Loket/PoliTHT";
+            } else if (poliID == 8) {
+                window.location.href = "/Loket/PoliAnak";
+            } else if (poliID == 9) {
+                window.location.href = "/Loket/PoliSyaraf";
+            } else if (poliID == 10) {
+                window.location.href = "/Loket/Radiologi";
+            } else if (poliID == 11) {
+                window.location.href = "/Loket/Laboratorium";
+            } else if (poliID == 12) {
+                window.location.href = "/Loket/Farmasi";
+            } else if (poliID == 13) {
+                window.location.href = "/Loket/RekamMedis";
+            } else if (poliID == 14) {
+                window.location.href = "/Loket/Kasir";
+            }
+        }
+    </script>
+}

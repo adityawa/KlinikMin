@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7DB62F9C-5428-484F-AE2D-8831D92EA816}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Klinik.Features</RootNamespace>
+    <AssemblyName>Klinik.Features</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.1.15.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqKit.1.1.15\lib\net45\LinqKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\AccountHandler.cs" />
+    <Compile Include="Account\AccountRequest.cs" />
+    <Compile Include="Account\AccountResponse.cs" />
+    <Compile Include="Account\AccountValidator.cs" />
+    <Compile Include="Account\PasswordHistory\PasswordHistoryHandler.cs" />
+    <Compile Include="Account\PasswordHistory\PasswordHistoryRequest.cs" />
+    <Compile Include="Account\PasswordHistory\PasswordHistoryResponse.cs" />
+    <Compile Include="Account\PasswordHistory\PasswordHistoryValidator.cs" />
+    <Compile Include="Administration\Log\LogHandler.cs" />
+    <Compile Include="Administration\Log\LogRequest.cs" />
+    <Compile Include="Administration\Log\LogResponse.cs" />
+    <Compile Include="Administration\Log\LogValidator.cs" />
+    <Compile Include="BaseFeatures.cs" />
+    <Compile Include="IBaseFeatures.cs" />
+    <Compile Include="MapMasterData\OrganizationPrivilege\OrganizationPrivilegeHandler.cs" />
+    <Compile Include="MapMasterData\OrganizationPrivilege\OrganizationPrivilegeRequest.cs" />
+    <Compile Include="MapMasterData\OrganizationPrivilege\OrganizationPrivilegeResponse.cs" />
+    <Compile Include="MapMasterData\OrganizationPrivilege\OrganizationPrivilegeValidator.cs" />
+    <Compile Include="MapMasterData\RolePrivilege\RolePrivilegeHandler.cs" />
+    <Compile Include="MapMasterData\RolePrivilege\RolePrivilegeRequest.cs" />
+    <Compile Include="MapMasterData\RolePrivilege\RolePrivilegeResponse.cs" />
+    <Compile Include="MapMasterData\RolePrivilege\RolePrivilegeValidator.cs" />
+    <Compile Include="MapMasterData\UserRole\UserRoleHandler.cs" />
+    <Compile Include="MapMasterData\UserRole\UserRoleRequest.cs" />
+    <Compile Include="MapMasterData\UserRole\UserRoleResponse.cs" />
+    <Compile Include="MapMasterData\UserRole\UserRoleValidator.cs" />
+    <Compile Include="MasterData\City\CityHandler.cs" />
+    <Compile Include="MasterData\Clinic\ClinicHandler.cs" />
+    <Compile Include="MasterData\Clinic\ClinicRequest.cs" />
+    <Compile Include="MasterData\Clinic\ClinicResponse.cs" />
+    <Compile Include="MasterData\Clinic\ClinicValidator.cs" />
+    <Compile Include="MasterData\EmployeeStatus\EmployeeStatusHandler.cs" />
+    <Compile Include="MasterData\Employee\EmployeeHandler.cs" />
+    <Compile Include="MasterData\Employee\EmployeeRequest.cs" />
+    <Compile Include="MasterData\Employee\EmployeeResponse.cs" />
+    <Compile Include="MasterData\Employee\EmployeeValidator.cs" />
+    <Compile Include="MasterData\FamilyRelationship\FamilyStatusHandler.cs" />
+    <Compile Include="MasterData\GeneralMaster\MasterHandler.cs" />
+    <Compile Include="MasterData\Menu\MenuHandler.cs" />
+    <Compile Include="MasterData\Organization\OrganizationHandler.cs" />
+    <Compile Include="MasterData\Organization\OrganizationRequest.cs" />
+    <Compile Include="MasterData\Organization\OrganizationResponse.cs" />
+    <Compile Include="MasterData\Organization\OrganizationValidator.cs" />
+    <Compile Include="MasterData\Privileges\PrivilegeHandler.cs" />
+    <Compile Include="MasterData\Privileges\PrivilegeRequest.cs" />
+    <Compile Include="MasterData\Privileges\PrivilegeResponse.cs" />
+    <Compile Include="MasterData\Privileges\PrivilegeValidator.cs" />
+    <Compile Include="MasterData\Roles\RoleHandler.cs" />
+    <Compile Include="MasterData\Roles\RoleRequest.cs" />
+    <Compile Include="MasterData\Roles\RoleResponse.cs" />
+    <Compile Include="MasterData\Roles\RoleValidator.cs" />
+    <Compile Include="MasterData\User\UserHandler.cs" />
+    <Compile Include="MasterData\User\UserRequest.cs" />
+    <Compile Include="MasterData\User\UserResponse.cs" />
+    <Compile Include="MasterData\User\UserValidator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Klinik.Common\Klinik.Common.csproj">
+      <Project>{e5c9d610-f530-4d0e-8d9e-2a729ccbff23}</Project>
+      <Name>Klinik.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Klinik.Data\Klinik.Data.csproj">
+      <Project>{53291442-9a4c-4416-8871-8c94d7636404}</Project>
+      <Name>Klinik.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Klinik.Entities\Klinik.Entities.csproj">
+      <Project>{0a81b9b4-7d64-412d-8e86-8ae9d22cf53f}</Project>
+      <Name>Klinik.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Klinik.Interfaces\Klinik.Interfaces.csproj">
+      <Project>{6604e37f-d994-4395-ada9-6c5a0a561857}</Project>
+      <Name>Klinik.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Klinik.Resources\Klinik.Resources.csproj">
+      <Project>{3d1a8222-cc25-4bb0-8820-f26c53aa9e8d}</Project>
+      <Name>Klinik.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

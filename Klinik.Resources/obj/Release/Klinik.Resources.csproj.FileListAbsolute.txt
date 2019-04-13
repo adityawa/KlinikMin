@@ -1,0 +1,9 @@
+D:\Adit\Project\Private\STU\Klinik\Klinik.Resources\bin\Release\Klinik.Resources.dll
+D:\Adit\Project\Private\STU\Klinik\Klinik.Resources\bin\Release\Klinik.Resources.pdb
+D:\Adit\Project\Private\STU\Klinik\Klinik.Resources\obj\Release\Klinik.Resources.csprojAssemblyReference.cache
+D:\Adit\Project\Private\STU\Klinik\Klinik.Resources\obj\Release\Klinik.Resources.Messages.resources
+D:\Adit\Project\Private\STU\Klinik\Klinik.Resources\obj\Release\Klinik.Resources.UIMessages.resources
+D:\Adit\Project\Private\STU\Klinik\Klinik.Resources\obj\Release\Klinik.Resources.csproj.GenerateResource.cache
+D:\Adit\Project\Private\STU\Klinik\Klinik.Resources\obj\Release\Klinik.Resources.csproj.CoreCompileInputs.cache
+D:\Adit\Project\Private\STU\Klinik\Klinik.Resources\obj\Release\Klinik.Resources.dll
+D:\Adit\Project\Private\STU\Klinik\Klinik.Resources\obj\Release\Klinik.Resources.pdb

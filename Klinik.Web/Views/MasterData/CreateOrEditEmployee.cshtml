@@ -1,0 +1,226 @@
+﻿@model Klinik.Entities.MasterData.EmployeeModel
+
+
+@{
+    ViewBag.Title = "CreateOrEditEmployee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="panel">
+    <header class="panel-heading">
+        <div class="panel-actions">
+            <a href="#" class="fa fa-caret-down"></a>
+        </div>
+        <h5 class="panel-title">Form @ViewBag.ActionType Employee</h5>
+    </header>
+    <div class="panel-body">
+        <form class="form-horizontal form-bordered" method="post" action="/MasterData/CreateOrEditEmployee">
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.EmployeeId</label>
+                <div class="col-md-4">
+                    @Html.HiddenFor(x => x.Id)
+                    @Html.TextBoxFor(x => x.EmpID, new { @class = "form-control", @id = "tbEmplId" })
+                    @Html.ValidationMessageFor(m => m.EmpID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Name</label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.EmpName, new { @class = "form-control", @id = "tbEmplId" })
+                    @Html.ValidationMessageFor(m => m.EmpName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.Gender
+                </label>
+                <div class="col-md-4">
+                    @Html.RadioButtonFor(m => m.Gender, "M", new { @class = "form-check-input", @id = "rdbMale" }) @Klinik.Resources.UIMessages.Male
+                    &nbsp;
+                    @Html.RadioButtonFor(m => m.Gender, "F", new { @class = "form-check-input", @id = "rdbFeMale", @text = "Female" }) @Klinik.Resources.UIMessages.Female
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Birthdate</label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.Birthdate, "{0:dd/MM/yyyy}", new { @class = "form-control", @id = "tbBirthDate" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.EmploymentType
+                </label>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(p => p.EmpType, (IEnumerable<SelectListItem>)ViewBag.EmpTypes, new { @class = "form-control", @id = "ddlEmpType" })
+                    @Html.ValidationMessageFor(m => m.EmpType, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.EmpReffID
+                </label>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(p => p.ReffEmpID, (IEnumerable<SelectListItem>)ViewBag.EmpActive, new { @class = "form-control", @id = "ddlEmpReff" })
+
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.Department
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.Department, new { @class = "form-control", @id = "tbDepartment" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.BusinessUnit
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.BussinesUnit, new { @class = "form-control", @id = "tbBu" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.Region
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.Region, new { @class = "form-control", @id = "tbRegion" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.EmpJoinDate</label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.StartDate, "{0:dd/MM/yyyy}", new { @class = "form-control", @id = "tbStartDate" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.EmpEndDate</label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.EndDate, "{0:dd/MM/yyyy}", new { @class = "form-control", @id = "tbEndDate" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">@Klinik.Resources.UIMessages.Email</label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @id = "tbEmail" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.KTP
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.KTPNumber, new { @class = "form-control", @id = "tbKTP" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.HPNumber
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.HPNumber, new { @class = "form-control", @id = "tbHP" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.EmpStatus
+                </label>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(p => p.EmpStatus, (IEnumerable<SelectListItem>)ViewBag.EmplStatus, new { @class = "form-control", @id = "ddlEmpStatus" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.EmpGrade
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.Grade, new { @class = "form-control", @id = "tbGrade" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDefault">
+                    @Klinik.Resources.UIMessages.LastEmpID
+                </label>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.LastEmpId, new { @class = "form-control", @id = "tbLastEmpID" })
+                </div>
+            </div>
+            <br />
+            <footer class="panel-footer">
+                <button type="submit" class="btn btn-primary">@Klinik.Resources.UIMessages.Save</button>
+                <button type="reset" id="btnreset" class="btn btn-default">@Klinik.Resources.UIMessages.Back</button>
+            </footer>
+        </form>
+    </div>
+</section>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnreset').click(function (e) {
+             window.location.href = "/MasterData/EmployeeList";
+        });
+
+        $('#ddlEmpType').select2();
+        $('#ddlEmpStatus').select2();
+        $('#ddlEmpReff').select2();
+
+        $('#tbBirthDate').datepicker({
+            format: "dd/mm/yyyy",
+            changeMonth: true,
+            changeYear: true
+        });
+
+        $('#tbStartDate').datepicker({
+            format: "dd/mm/yyyy",
+            changeMonth: true,
+            changeYear: true
+        });
+
+        $('#tbEndDate').datepicker({
+            format: "dd/mm/yyyy",
+            changeMonth: true,
+            changeYear: true
+        });
+
+        toastr.options = {
+            "closeButton": false,
+            "positionClass": "toast-top-full-width",
+            "onclick": null,
+            "showDuration": "0",
+            "hideDuration": "0",
+            "timeOut": "2000",
+            "showMethod": "fadeIn"
+        };
+
+        var _temp="@ViewBag.Response";
+        var _arrMsg = _temp.split(";");
+
+        if (_arrMsg.length > 1) {
+            if (_arrMsg[0] == "True") {
+                toastr.success(_arrMsg[1]);
+            }
+            else {
+                toastr.options.closeButton = true;
+                toastr.options.timeOut = 0;
+                toastr.error(_arrMsg[1]);
+            }
+        }
+    });
+
+</script>
