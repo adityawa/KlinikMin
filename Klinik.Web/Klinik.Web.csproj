@@ -225,6 +225,7 @@
     <Compile Include="Base\BaseController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LabController.cs" />
     <Compile Include="Controllers\MappingMasterController.cs" />
     <Compile Include="Controllers\MasterDataController.cs" />
     <Compile Include="Controllers\PasswordHistoryController.cs" />
@@ -1393,6 +1394,9 @@
     <Content Include="Views\MasterData\PoliList.cshtml" />
     <Content Include="Views\MasterData\CreateOrEditPoli.cshtml" />
     <Content Include="Views\MappingMaster\ClinicPoliList.cshtml" />
+    <Content Include="Views\Lab\CreateItemLab.cshtml" />
+    <Content Include="Views\Lab\InputLabResult.cshtml" />
+    <Content Include="Views\Lab\ListQueueLaboratorium.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

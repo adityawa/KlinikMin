@@ -19,7 +19,7 @@ namespace Klinik.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class UIMessages {
@@ -84,6 +84,15 @@ namespace Klinik.Resources {
         public static string Active {
             get {
                 return ResourceManager.GetString("Active", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
             }
         }
         
@@ -192,6 +201,15 @@ namespace Klinik.Resources {
         public static string BusinessUnit {
             get {
                 return ResourceManager.GetString("BusinessUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
             }
         }
         
@@ -853,6 +871,15 @@ namespace Klinik.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Input Result.
+        /// </summary>
+        public static string InputLabResult {
+            get {
+                return ResourceManager.GetString("InputLabResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to KB Date.
         /// </summary>
         public static string KBDate {
@@ -876,6 +903,15 @@ namespace Klinik.Resources {
         public static string KTPNumber {
             get {
                 return ResourceManager.GetString("KTPNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Laboratorium Queue.
+        /// </summary>
+        public static string LaboratoriumQueue {
+            get {
+                return ResourceManager.GetString("LaboratoriumQueue", resourceCulture);
             }
         }
         
@@ -1857,16 +1893,6 @@ namespace Klinik.Resources {
         public static string Weight {
             get {
                 return ResourceManager.GetString("Weight", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Poli List.
-        /// </summary>
-        public static string PoliList
-        {
-            get{
-                return ResourceManager.GetString("PoliList", resourceCulture);
             }
         }
     }

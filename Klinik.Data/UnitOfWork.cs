@@ -22,10 +22,15 @@ namespace Klinik.Data
         private IGenericRepository<EmployeeAssignment> _employeeAssignmentRepository;
         private IGenericRepository<EmployeeStatu> _employeeStatusRepository;
         public IGenericRepository<FamilyRelationship> _familyRelationshipRepository;
-       
+        private IGenericRepository<QueuePoli> _registrationRepository;
         private IGenericRepository<FileArchieve> _fileArchiveRepository;
         private IGenericRepository<City> _cityRepository;
-        
+        private IGenericRepository<LabItem> _labItemRepository;
+        private IGenericRepository<LabItemCategory> _labItemCategoryRepository;
+        private IGenericRepository<FormExamineLab> _formExamineLabRepository;
+        private IGenericRepository<FormExamine> _formExamineRepository;
+        private IGenericRepository<Poli> _poliRepository;
+        private IGenericRepository<Doctor> _doctorRepository;
         private bool disposed = false;
 
         public UnitOfWork(klinikEntities context)
@@ -96,6 +101,25 @@ namespace Klinik.Data
             }
         }
 
+        public IGenericRepository<LabItemCategory> LabItemCategoryRepository
+        {
+            get
+            {
+                if (_labItemCategoryRepository == null)
+                    _labItemCategoryRepository = new GenericRepository<LabItemCategory>(_context);
+                return _labItemCategoryRepository;
+            }
+        }
+
+        public IGenericRepository<Doctor> DoctorRepository
+        {
+            get
+            {
+                if (_doctorRepository == null)
+                    _doctorRepository = new GenericRepository<Doctor>(_context);
+                return _doctorRepository;
+            }
+        }
         public IGenericRepository<City> CityRepository
         {
             get
@@ -230,7 +254,57 @@ namespace Klinik.Data
             }
         }
 
-      
+        public IGenericRepository<QueuePoli> RegistrationRepository
+        {
+            get
+            {
+                if (_registrationRepository == null)
+                    _registrationRepository = new GenericRepository<QueuePoli>(_context);
+
+                return _registrationRepository;
+            }
+        }
+
+        public IGenericRepository<LabItem> LabItemRepository
+        {
+            get
+            {
+                if (_labItemRepository == null)
+                    _labItemRepository = new GenericRepository<LabItem>(_context);
+                return _labItemRepository;
+            }
+        }
+
+        public IGenericRepository<FormExamineLab> FormExamineLabRepository
+        {
+            get
+            {
+                if (_formExamineLabRepository == null)
+                    _formExamineLabRepository = new GenericRepository<FormExamineLab>(_context);
+                return _formExamineLabRepository;
+            }
+        }
+
+        public IGenericRepository<FormExamine> FormExamineRepository
+        {
+            get
+            {
+                if (_formExamineRepository == null)
+                    _formExamineRepository = new GenericRepository<FormExamine>(_context);
+                return _formExamineRepository;
+            }
+        }
+
+        public IGenericRepository<Poli> PoliRepository
+        {
+            get
+            {
+                if (_poliRepository == null)
+                    _poliRepository = new GenericRepository<Poli>(_context);
+
+                return _poliRepository;
+            }
+        }
 
         public virtual void Dispose(bool disposing)
         {

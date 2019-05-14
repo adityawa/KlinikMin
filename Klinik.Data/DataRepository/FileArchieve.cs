@@ -14,6 +14,12 @@ namespace Klinik.Data.DataRepository
     
     public partial class FileArchieve
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public FileArchieve()
+        {
+            this.PatientClinics = new HashSet<PatientClinic>();
+        }
+    
         public long ID { get; set; }
         public string SourceTable { get; set; }
         public string ActualPath { get; set; }
@@ -24,5 +30,8 @@ namespace Klinik.Data.DataRepository
         public System.DateTime CreatedDate { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PatientClinic> PatientClinics { get; set; }
     }
 }

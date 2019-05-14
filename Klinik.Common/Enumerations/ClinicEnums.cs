@@ -52,7 +52,9 @@
             Patient,
             FormPreExamine,
             MASTER_POLI,
-            MASTER_POLI_CLINIC
+            MASTER_POLI_CLINIC,
+            MASTER_LAB_ITEM,
+            MASTER_LAB_ITEM_CATEGORY
         }
 
         public enum Action

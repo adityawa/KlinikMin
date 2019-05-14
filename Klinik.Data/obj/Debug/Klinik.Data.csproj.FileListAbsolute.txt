@@ -10,7 +10,6 @@ D:\Adit\Project\Private\STU\Klinik\Klinik.Data\obj\Debug\Klinik.Data.dll
 D:\Adit\Project\Private\STU\Klinik\Klinik.Data\obj\Debug\Klinik.Data.pdb
 D:\Adit\Project\Private\STU\Klinik\Klinik.Data\bin\Debug\Klinik.Data.dll.config
 D:\Adit\Project\Private\STU\Klinik\Klinik.Data\obj\Debug\Klinik.Data.csprojAssemblyReference.cache
-D:\Adit\Project\Private\STU\KlinikMin\Klinik.Data\obj\Debug\Klinik.Data.csprojAssemblyReference.cache
 D:\Adit\Project\Private\STU\KlinikMin\Klinik.Data\obj\Debug\Klinik.Data.csproj.CoreCompileInputs.cache
 D:\Adit\Project\Private\STU\KlinikMin\Klinik.Data\obj\Debug\Klinik.Data.dll
 D:\Adit\Project\Private\STU\KlinikMin\Klinik.Data\obj\Debug\Klinik.Data.pdb
@@ -22,3 +21,4 @@ D:\Adit\Project\Private\STU\KlinikMin\Klinik.Data\bin\Debug\EntityFramework.SqlS
 D:\Adit\Project\Private\STU\KlinikMin\Klinik.Data\bin\Debug\EntityFramework.xml
 D:\Adit\Project\Private\STU\KlinikMin\Klinik.Data\bin\Debug\EntityFramework.SqlServer.xml
 D:\Adit\Project\Private\STU\KlinikMin\Klinik.Data\obj\Debug\Klinik.Data.csproj.CopyComplete
+D:\Adit\Project\Private\STU\KlinikMin\Klinik.Data\obj\Debug\Klinik.Data.csprojAssemblyReference.cache

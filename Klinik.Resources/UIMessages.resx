@@ -717,4 +717,16 @@
   <data name="Weight" xml:space="preserve">
     <value>Weight</value>
   </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="LaboratoriumQueue" xml:space="preserve">
+    <value>Laboratorium Queue</value>
+  </data>
+  <data name="InputLabResult" xml:space="preserve">
+    <value>Input Result</value>
+  </data>
 </root>

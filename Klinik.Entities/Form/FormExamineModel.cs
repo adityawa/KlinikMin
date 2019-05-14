@@ -8,6 +8,7 @@ namespace Klinik.Entities.Form
         public int? PoliID { get; set; }
         public DateTime? TransDate { get; set; }
         public int? DoctorID { get; set; }
+        public string Anamnesa { get; set; }
         public string Diagnose { get; set; }
         public string Therapy { get; set; }
         public string Remark { get; set; }

@@ -19,7 +19,7 @@ namespace Klinik.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Messages {
@@ -217,6 +217,33 @@ namespace Klinik.Resources {
         public static string InvalidUsernamePassword {
             get {
                 return ResourceManager.GetString("InvalidUsernamePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Lab items added with form medical ID : {1}.
+        /// </summary>
+        public static string LabItemAdded {
+            get {
+                return ResourceManager.GetString("LabItemAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lab Item cannot be change because the status was finished.
+        /// </summary>
+        public static string LabItemCannotChange {
+            get {
+                return ResourceManager.GetString("LabItemCannotChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lab Result successfully updated.
+        /// </summary>
+        public static string LabResultUpdated {
+            get {
+                return ResourceManager.GetString("LabResultUpdated", resourceCulture);
             }
         }
         

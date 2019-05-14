@@ -27,15 +27,28 @@ namespace Klinik.Features
         /// Get all clinic
         /// </summary>
         /// <returns></returns>
-        public IList<ClinicModel> GetAllClinic()
+        public IList<ClinicModel> GetAllClinic(long clinicId = 0)
         {
-            var qry = _unitOfWork.ClinicRepository.Get();
             IList<ClinicModel> clinics = new List<ClinicModel>();
-            foreach (var item in qry)
+            if (clinicId == 0)
             {
-                var _clinic = Mapper.Map<Clinic, ClinicModel>(item);
-                clinics.Add(_clinic);
+                var qry = _unitOfWork.ClinicRepository.Get();
+                foreach (var item in qry)
+                {
+                    var _clinic = Mapper.Map<Clinic, ClinicModel>(item);
+                    clinics.Add(_clinic);
+                }
             }
+            else
+            {
+                var qry = _unitOfWork.ClinicRepository.Get(x => x.ID == clinicId);
+                foreach (var item in qry)
+                {
+                    var _clinic = Mapper.Map<Clinic, ClinicModel>(item);
+                    clinics.Add(_clinic);
+                }
+            }
+
 
             return clinics;
         }

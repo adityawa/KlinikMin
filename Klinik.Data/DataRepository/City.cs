@@ -14,6 +14,13 @@ namespace Klinik.Data.DataRepository
     
     public partial class City
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public City()
+        {
+            this.Patients = new HashSet<Patient>();
+            this.PatientClinics = new HashSet<PatientClinic>();
+        }
+    
         public int Id { get; set; }
         public string Province { get; set; }
         public string City1 { get; set; }
@@ -21,5 +28,10 @@ namespace Klinik.Data.DataRepository
         public string Kecamatan { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Patient> Patients { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PatientClinic> PatientClinics { get; set; }
     }
 }

@@ -131,7 +131,7 @@ namespace Klinik.Features.MasterData.Poli
             var searchPredicate = PredicateBuilder.New<Klinik.Data.DataRepository.Poli>(true);
 
             // add default filter to show the active data only
-            searchPredicate = searchPredicate.And(x => x.Rowstatus == 0);
+            searchPredicate = searchPredicate.And(x => x.RowStatus == 0);
 
             if (!String.IsNullOrEmpty(request.SearchValue) && !String.IsNullOrWhiteSpace(request.SearchValue))
             {
@@ -202,7 +202,7 @@ namespace Klinik.Features.MasterData.Poli
                 var poli = _unitOfWork.PoliRepository.GetById(request.Data.Id);
                 if (poli.ID > 0)
                 {
-                    poli.Rowstatus = -1;
+                    poli.RowStatus = -1;
                     poli.ModifiedBy = request.Data.Account.UserCode;
                     poli.ModifiedDate = DateTime.Now;
 
@@ -235,5 +235,13 @@ namespace Klinik.Features.MasterData.Poli
             return response;
         }
 
+        public static int GetPoliIDBasedOnName(string poliName)
+        {
+            Int32 _id = 0;
+            var _getPoli = _unitOfWork.PoliRepository.GetFirstOrDefault(x => x.Name == poliName);
+            if (_getPoli != null)
+                _id = _getPoli.ID;
+            return _id;
+        }
     }
 }

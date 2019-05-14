@@ -274,4 +274,13 @@ Administrator</value>
   <data name="PatientNotRegistered" xml:space="preserve">
     <value>Patient is not registered in Poli yet</value>
   </data>
+  <data name="LabItemCannotChange" xml:space="preserve">
+    <value>Lab Item cannot be change because the status was finished</value>
+  </data>
+  <data name="LabItemAdded" xml:space="preserve">
+    <value>{0} Lab items added with form medical ID : {1}</value>
+  </data>
+  <data name="LabResultUpdated" xml:space="preserve">
+    <value>Lab Result successfully updated</value>
+  </data>
 </root>

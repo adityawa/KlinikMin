@@ -14,3 +14,4 @@ D:\Adit\Project\Private\STU\KlinikMin\Klinik.Resources\obj\Debug\Klinik.Resource
 D:\Adit\Project\Private\STU\KlinikMin\Klinik.Resources\obj\Debug\Klinik.Resources.csproj.CoreCompileInputs.cache
 D:\Adit\Project\Private\STU\KlinikMin\Klinik.Resources\obj\Debug\Klinik.Resources.dll
 D:\Adit\Project\Private\STU\KlinikMin\Klinik.Resources\obj\Debug\Klinik.Resources.pdb
+D:\Adit\Project\Private\STU\KlinikMin\Klinik.Resources\obj\Debug\Klinik.Resources.csprojAssemblyReference.cache

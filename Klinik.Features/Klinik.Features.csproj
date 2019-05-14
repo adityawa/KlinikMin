@@ -77,6 +77,12 @@
     <Compile Include="Administration\Log\LogValidator.cs" />
     <Compile Include="BaseFeatures.cs" />
     <Compile Include="IBaseFeatures.cs" />
+    <Compile Include="Laboratorium\LabHandler.cs" />
+    <Compile Include="Laboratorium\LabRequest.cs" />
+    <Compile Include="Laboratorium\LabResponse.cs" />
+    <Compile Include="Laboratorium\LabValidator.cs" />
+    <Compile Include="Loket\LoketRequest.cs" />
+    <Compile Include="Loket\LoketResponse.cs" />
     <Compile Include="MapMasterData\OrganizationPrivilege\OrganizationPrivilegeHandler.cs" />
     <Compile Include="MapMasterData\OrganizationPrivilege\OrganizationPrivilegeRequest.cs" />
     <Compile Include="MapMasterData\OrganizationPrivilege\OrganizationPrivilegeResponse.cs" />
@@ -94,6 +100,10 @@
     <Compile Include="MasterData\Clinic\ClinicRequest.cs" />
     <Compile Include="MasterData\Clinic\ClinicResponse.cs" />
     <Compile Include="MasterData\Clinic\ClinicValidator.cs" />
+    <Compile Include="MasterData\Doctor\DoctorHandler.cs" />
+    <Compile Include="MasterData\Doctor\DoctorRequest.cs" />
+    <Compile Include="MasterData\Doctor\DoctorResponse.cs" />
+    <Compile Include="MasterData\Doctor\DoctorValidator.cs" />
     <Compile Include="MasterData\EmployeeStatus\EmployeeStatusHandler.cs" />
     <Compile Include="MasterData\Employee\EmployeeHandler.cs" />
     <Compile Include="MasterData\Employee\EmployeeRequest.cs" />
@@ -101,11 +111,23 @@
     <Compile Include="MasterData\Employee\EmployeeValidator.cs" />
     <Compile Include="MasterData\FamilyRelationship\FamilyStatusHandler.cs" />
     <Compile Include="MasterData\GeneralMaster\MasterHandler.cs" />
+    <Compile Include="MasterData\LabItemCategory\LabItemCategoryHandler.cs" />
+    <Compile Include="MasterData\LabItemCategory\LabItemCategoryRequest.cs" />
+    <Compile Include="MasterData\LabItemCategory\LabItemCategoryResponse.cs" />
+    <Compile Include="MasterData\LabItemCategory\LabItemCategoryValidator.cs" />
+    <Compile Include="MasterData\LabItem\LabItemHandler.cs" />
+    <Compile Include="MasterData\LabItem\LabItemRequest.cs" />
+    <Compile Include="MasterData\LabItem\LabItemResponse.cs" />
+    <Compile Include="MasterData\LabItem\LabItemValidator.cs" />
     <Compile Include="MasterData\Menu\MenuHandler.cs" />
     <Compile Include="MasterData\Organization\OrganizationHandler.cs" />
     <Compile Include="MasterData\Organization\OrganizationRequest.cs" />
     <Compile Include="MasterData\Organization\OrganizationResponse.cs" />
     <Compile Include="MasterData\Organization\OrganizationValidator.cs" />
+    <Compile Include="MasterData\Poli\PoliHandler.cs" />
+    <Compile Include="MasterData\Poli\PoliRequest.cs" />
+    <Compile Include="MasterData\Poli\PoliResponse.cs" />
+    <Compile Include="MasterData\Poli\PoliValidator.cs" />
     <Compile Include="MasterData\Privileges\PrivilegeHandler.cs" />
     <Compile Include="MasterData\Privileges\PrivilegeRequest.cs" />
     <Compile Include="MasterData\Privileges\PrivilegeResponse.cs" />
@@ -145,6 +167,8 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="FormExamine\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

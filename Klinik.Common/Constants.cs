@@ -30,11 +30,32 @@
             public const string DELETE_EMPLOYEE = "Remove Employee";
             public const string ADD_NEW_PATIENT = "Add New Patient";
             public const string ADD_EDIT_PATIENT = "Add/Edit Patient";
-
             public const string ADD_NEW_FORM_PREEXAMINE = "Add New Form Pre Examine";
             public const string EDIT_FORM_PREEXAMINE = "Edit Form Pre Examine";
             public const string EDIT_POLI = "Edit Form Poli";
             public const string ADD_NEW_POLI = "Add New Poli";
+            public const string ADD_FORM_EXAMINE = "Add Form Examine";
+            public const string EDIT_FORM_EXAMINE = "Edit Form Examine";
+            public const string EDIT_PRODUCT = "Edit Product";
+            public const string EDIT_PRODUCT_CATEGORY = "Edit Product Category";
+            public const string EDIT_PRODUCT_MEDICINE = "Edit Product Medicine";
+            public const string EDIT_PRODUCT_UNIT = "Edit Product Unit";
+            public const string EDIT_MEDICINE = "Edit Medicine";
+            public const string EDIT_LAB_ITEM = "Edit Lab Item";
+            public const string EDIT_LAB_ITEM_CATEGORY = "Edit Lab Item Category";
+            public const string ADD_PRODUCT = "Add New Product";
+            public const string ADD_PRODUCT_CATEGORY = "Add New Product Category";
+            public const string ADD_PRODUCT_MEDICINE = "Add New Product Medicine";
+            public const string ADD_PRODUCT_UNIT = "Add New Product Unit";
+            public const string ADD_MEDICINE = "Add New Medicine";
+            public const string ADD_LAB_ITEM = "Add New Lab Item";
+            public const string ADD_LAB_ITEM_CATEGORY = "Add New Lab Item Category";
+            public const string EDIT_MENU = "Edit Form Menu";
+            public const string ADD_MENU = "Add New Menu";
+            public const string EDIT_SERVICE = "Edit Form Service";
+            public const string ADD_SERVICE = "Add New Service";
+            public const string EDIT_POLI_SERVICE = "Edit Form Poli Service";
+            public const string ADD_POLI_SERVICE = "Add New Poli Service";
         }
 
         public static class MasterType
@@ -57,6 +78,10 @@
         public static class NameConstant
         {
             public const string Loket = "Loket";
+            public const string Laboratorium = "Laboratorium";
+            public const string Radiology = "Radiology";
+            public const string Radiologi = "Radiologi";
+            public const string Kasir = "Kasir";
         }
     }
 }
